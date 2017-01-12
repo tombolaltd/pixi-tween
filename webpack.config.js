@@ -41,11 +41,6 @@ module.exports = {
     new ExternalsPlugin({
       include: path.join(__dirname, 'node_modules', 'pixi.js'),
       type: 'var'
-    }),
-    new webpack.optimize.UglifyJsPlugin({
-      compress: {
-        warnings: false
-      }
     })
   ]
 };
