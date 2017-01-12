@@ -8,14 +8,12 @@ export default class TweenManager {
       this._last = 0;
   }
 
-  update(delta){
-    let deltaMS;
-    if(!delta && delta !== 0){
+  update(deltaMS){
+    if(!deltaMS && deltaMS !== 0){
       deltaMS = this._getDeltaMS();
-      delta = deltaMS/1000;
-    }else{
-      deltaMS = delta*1000;
     }
+
+    var delta = deltaMS/1000;
 
     for(let i = 0; i < this.tweens.length; i++){
       let tween = this.tweens[i];
