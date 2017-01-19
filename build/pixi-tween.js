@@ -284,7 +284,7 @@
 	      var that = this;
 
 	      if (this._resolveStart) {
-	        this._resolveStart();
+	        return Promise.resolve();
 	      }
 
 	      return new Promise(function (resolve, reject) {
