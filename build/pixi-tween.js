@@ -271,14 +271,22 @@
 	    }
 	  }, {
 	    key: 'start',
-	    value: function start() {
+	    value: function start(resolve) {
 	      this.active = true;
+	      if (!this._resolveStart && resolve) {
+	        this._resolveStart = resolve;
+	      }
 	      return this;
 	    }
 	  }, {
 	    key: 'startPromise',
 	    value: function startPromise() {
 	      var that = this;
+
+	      if (this._resolveStart) {
+	        this._resolveStart();
+	      }
+
 	      return new Promise(function (resolve, reject) {
 	        that._resolveStart = resolve;
 	        that.start();
@@ -436,14 +444,15 @@
 	          this.emit('end');
 	          this._elapsedTime = 0;
 
-	          if (this._resolveStart) {
-	            this._resolveStart();
-	            this._resolveStart = null;
-	          }
-
 	          if (this._chainTween) {
 	            this._chainTween.addTo(this.manager);
 	            this._chainTween.start(this._resolveStart);
+	            this._resolveStart = null;
+	          } else {
+	            if (this._resolveStart) {
+	              this._resolveStart();
+	              this._resolveStart = null;
+	            }
 	          }
 	        }
 	        return;
