@@ -18,8 +18,9 @@
   },
   "scripts": {
     "prepublish": "npm run build",
-    "dev": "webpack --config webpack.config.js --progress --inline --colors --watch",
-    "build": "webpack --config webpack.config.js --progress --colors -p"
+    "dev": "webpack --config webpack.config.js --progress --inline --colors",
+    "watch": "webpack --config webpack.config.js --progress --inline --colors --watch",
+    "build": "webpack --config webpack.config.js --progress --inline --colors -p"
   },
   "devDependencies": {
     "babel-core": "^6.3.17",

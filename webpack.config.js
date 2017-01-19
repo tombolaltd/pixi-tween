@@ -5,11 +5,10 @@ var path = require('path');
 var ExternalsPlugin = require('webpack-externals-plugin');
 
 var PLUGIN_NAME = require('./package.json').name;
-// var DEV = process.env.NODE_ENV !== 'production';
+var DEV = true;
 var ENTRY = ['./src/index.js'];
 
 module.exports = {
-  devtool: 'source-map',
   entry: ENTRY,
   output: {
     filename: 'build/' + PLUGIN_NAME + '.js'

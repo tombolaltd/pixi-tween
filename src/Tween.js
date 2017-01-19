@@ -26,6 +26,14 @@ export default class Tween extends PIXI.utils.EventEmitter{
     return this;
   }
 
+  startPromise(){
+    var that = this;
+		return new Promise( function( resolve, reject ) {
+      that._resolveStart = resolve;
+      that.start();
+    } );
+	}
+
   stop(){
     this.active = false;
     this.emit('stop');
@@ -73,6 +81,8 @@ export default class Tween extends PIXI.utils.EventEmitter{
     this.pathReverse = false;
     this.pathFrom = 0;
     this.pathTo = 0;
+
+    this._resolveStart = null;
   }
 
   reset(){
@@ -165,10 +175,16 @@ export default class Tween extends PIXI.utils.EventEmitter{
         this.isEnded = true;
         this.active = false;
         this.emit('end');
+        this._elapsedTime = 0;
 
+        if (this._resolveStart){
+          this._resolveStart();
+          this._resolveStart = null;
+        }
+			
         if(this._chainTween){
           this._chainTween.addTo(this.manager);
-          this._chainTween.start();
+          this._chainTween.start(this._resolveStart);
         }
       }
       return;
