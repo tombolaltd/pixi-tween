@@ -445,7 +445,9 @@
 	          this._elapsedTime = 0;
 
 	          if (this._chainTween) {
-	            this._chainTween.addTo(this.manager);
+	            if (!this._chainTween.manager) {
+	              this._chainTween.addTo(this.manager);
+	            }
 	            this._chainTween.start(this._resolveStart);
 	            this._resolveStart = null;
 	          } else {
