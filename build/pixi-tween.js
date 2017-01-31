@@ -452,8 +452,9 @@
 	            this._resolveStart = null;
 	          } else {
 	            if (this._resolveStart) {
-	              this._resolveStart();
+	              var resolveStart = this._resolveStart;
 	              this._resolveStart = null;
+	              resolveStart();
 	            }
 	          }
 	        }

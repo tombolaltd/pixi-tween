@@ -193,8 +193,9 @@ export default class Tween extends PIXI.utils.EventEmitter{
           this._resolveStart = null;
         } else {
           if (this._resolveStart){
-            this._resolveStart();
+            const resolveStart = this._resolveStart;
             this._resolveStart = null;
+            resolveStart();
           }
         }
       }
