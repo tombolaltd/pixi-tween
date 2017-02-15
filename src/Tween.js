@@ -79,7 +79,7 @@ export default class Tween extends PIXI.utils.EventEmitter{
     this._to = null;
     this._from = null;
     this._delayTime = 0;
-    this._elapsedTime = 0;
+    this.elapsedTime = 0;
     this._repeat = 0;
     this._pingPong = false;
 
@@ -94,7 +94,7 @@ export default class Tween extends PIXI.utils.EventEmitter{
   }
 
   reset(){
-    this._elapsedTime = 0;
+    this.elapsedTime = 0;
     this._repeat = 0;
     this._delayTime = 0;
     this.isStarted = false;
@@ -127,14 +127,14 @@ export default class Tween extends PIXI.utils.EventEmitter{
     }
 
     let time = (this.pingPong) ? this.time/2 : this.time;
-    if(time > this._elapsedTime){
-      let t = this._elapsedTime+deltaMS;
+    if(time > this.elapsedTime){
+      let t = this.elapsedTime+deltaMS;
       let ended = (t>=time);
 
-      this._elapsedTime = ended ? time : t;
+      this.elapsedTime = ended ? time : t;
       this._apply(time);
 
-      let realElapsed = this._pingPong ? time+this._elapsedTime : this._elapsedTime;
+      let realElapsed = this._pingPong ? time+this.elapsedTime : this.elapsedTime;
       this.emit('update', realElapsed);
 
       if(ended){
@@ -153,14 +153,14 @@ export default class Tween extends PIXI.utils.EventEmitter{
           }
 
           this.emit('pingpong');
-          this._elapsedTime = 0;
+          this.elapsedTime = 0;
           return;
         }
 
         if(this.loop || this.repeat > this._repeat){
           this._repeat++;
           this.emit('repeat', this._repeat);
-          this._elapsedTime = 0;
+          this.elapsedTime = 0;
 
           if(this.pingPong&&this._pingPong){
             _to = this._to;
@@ -183,7 +183,7 @@ export default class Tween extends PIXI.utils.EventEmitter{
         this.isEnded = true;
         this.active = false;
         this.emit('end');
-        this._elapsedTime = 0;
+        this.elapsedTime = 0;
 
         if(this._chainTween){
           if (!this._chainTween.manager) {
@@ -222,14 +222,14 @@ export default class Tween extends PIXI.utils.EventEmitter{
   }
 
   _apply(time){
-    _recursiveApplyTween(this._to, this._from, this.target, time, this._elapsedTime, this.easing);
+    _recursiveApplyTween(this._to, this._from, this.target, time, this.elapsedTime, this.easing);
 
     if(this.path){
       let time = (this.pingPong) ? this.time/2 : this.time;
       let b = this.pathFrom;
       let c = this.pathTo - this.pathFrom;
       let d = time;
-      let t = this._elapsedTime/d;
+      let t = this.elapsedTime/d;
 
       let distance = b+(c*this.easing(t));
       let pos = this.path.getPointAtDistance(distance);
