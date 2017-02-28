@@ -321,7 +321,7 @@
 	  }, {
 	    key: 'clear',
 	    value: function clear() {
-	      this.time = 0;
+	      this._time = 1;
 	      this.active = false;
 	      this.easing = _Easing2.default.linear();
 	      this.expire = false;
@@ -335,7 +335,7 @@
 	      this._to = null;
 	      this._from = null;
 	      this._delayTime = 0;
-	      this._elapsedTime = 0;
+	      this.elapsedTime = 0;
 	      this._repeat = 0;
 	      this._pingPong = false;
 
@@ -351,7 +351,7 @@
 	  }, {
 	    key: 'reset',
 	    value: function reset() {
-	      this._elapsedTime = 0;
+	      this.elapsedTime = 0;
 	      this._repeat = 0;
 	      this._delayTime = 0;
 	      this.isStarted = false;
@@ -385,15 +385,15 @@
 	        this.emit('start');
 	      }
 
-	      var time = this.pingPong ? this.time / 2 : this.time;
-	      if (time > this._elapsedTime) {
-	        var t = this._elapsedTime + deltaMS;
+	      var time = this.pingPong ? this._time / 2 : this._time;
+	      if (time > this.elapsedTime) {
+	        var t = this.elapsedTime + deltaMS;
 	        var ended = t >= time;
 
-	        this._elapsedTime = ended ? time : t;
+	        this.elapsedTime = ended ? time : t;
 	        this._apply(time);
 
-	        var realElapsed = this._pingPong ? time + this._elapsedTime : this._elapsedTime;
+	        var realElapsed = this._pingPong ? time + this.elapsedTime : this.elapsedTime;
 	        this.emit('update', realElapsed);
 
 	        if (ended) {
@@ -412,14 +412,14 @@
 	            }
 
 	            this.emit('pingpong');
-	            this._elapsedTime = 0;
+	            this.elapsedTime = 0;
 	            return;
 	          }
 
 	          if (this.loop || this.repeat > this._repeat) {
 	            this._repeat++;
 	            this.emit('repeat', this._repeat);
-	            this._elapsedTime = 0;
+	            this.elapsedTime = 0;
 
 	            if (this.pingPong && this._pingPong) {
 	              _to = this._to;
@@ -442,7 +442,7 @@
 	          this.isEnded = true;
 	          this.active = false;
 	          this.emit('end');
-	          this._elapsedTime = 0;
+	          this.elapsedTime = 0;
 
 	          if (this._chainTween) {
 	            if (!this._chainTween.manager) {
@@ -483,14 +483,14 @@
 	  }, {
 	    key: '_apply',
 	    value: function _apply(time) {
-	      _recursiveApplyTween(this._to, this._from, this.target, time, this._elapsedTime, this.easing);
+	      _recursiveApplyTween(this._to, this._from, this.target, time, this.elapsedTime, this.easing);
 
 	      if (this.path) {
-	        var _time = this.pingPong ? this.time / 2 : this.time;
+	        var _time = this.pingPong ? this._time / 2 : this._time;
 	        var b = this.pathFrom;
 	        var c = this.pathTo - this.pathFrom;
 	        var d = _time;
-	        var t = this._elapsedTime / d;
+	        var t = this.elapsedTime / d;
 
 	        var distance = b + c * this.easing(t);
 	        var pos = this.path.getPointAtDistance(distance);
@@ -500,7 +500,15 @@
 	  }, {
 	    key: '_canUpdate',
 	    value: function _canUpdate() {
-	      return this.time && this.active && this.target;
+	      return this._time && this.active && this.target;
+	    }
+	  }, {
+	    key: 'time',
+	    get: function get() {
+	      return this._time;
+	    },
+	    set: function set(value) {
+	      this._time = value || 1;
 	    }
 	  }]);
 

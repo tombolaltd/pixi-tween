@@ -65,7 +65,7 @@ export default class Tween extends PIXI.utils.EventEmitter{
   }
 
   clear(){
-    this.time = 0;
+    this._time = 1;
     this.active = false;
     this.easing = Easing.linear();
     this.expire = false;
@@ -126,7 +126,7 @@ export default class Tween extends PIXI.utils.EventEmitter{
       this.emit('start');
     }
 
-    let time = (this.pingPong) ? this.time/2 : this.time;
+    let time = (this.pingPong) ? this._time/2 : this._time;
     if(time > this.elapsedTime){
       let t = this.elapsedTime+deltaMS;
       let ended = (t>=time);
@@ -203,6 +203,14 @@ export default class Tween extends PIXI.utils.EventEmitter{
     }
   }
 
+  get time(){
+    return this._time;
+  }
+
+  set time(value){
+    this._time = value || 1;
+  }
+
   _parseData(){
     if(this.isStarted)return;
 
@@ -225,7 +233,7 @@ export default class Tween extends PIXI.utils.EventEmitter{
     _recursiveApplyTween(this._to, this._from, this.target, time, this.elapsedTime, this.easing);
 
     if(this.path){
-      let time = (this.pingPong) ? this.time/2 : this.time;
+      let time = (this.pingPong) ? this._time/2 : this._time;
       let b = this.pathFrom;
       let c = this.pathTo - this.pathFrom;
       let d = time;
@@ -238,7 +246,7 @@ export default class Tween extends PIXI.utils.EventEmitter{
   }
 
   _canUpdate(){
-    return (this.time && this.active && this.target);
+    return (this._time && this.active && this.target);
   }
 
 
