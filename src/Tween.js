@@ -300,7 +300,7 @@ function _parseRecursiveData(to, from, target) {
     for (let k in to) {
         if (from[k] !== 0 && !from[k]) {
             if (_isObject(target[k])) {
-                from[k] = JSON.parse(JSON.stringify(target[k]));
+                from[k] = {};
                 _parseRecursiveData(to[k], from[k], target[k]);
             } else {
                 from[k] = target[k];
