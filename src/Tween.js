@@ -1,8 +1,18 @@
 import * as PIXI from 'pixi.js';
 import Easing from './Easing';
 
+/**
+ * Tween class
+ *
+ * @class
+ * @memberof PIXI.tween
+ */
 export default class Tween extends PIXI.utils.EventEmitter{
-    constructor(target, manager) {
+    /**
+     * @param {*} target - Target object to tween
+     * @param {PIXI.tween.TweenManager} manager - Tween manager to handle this tween
+     */
+        constructor(target, manager) {
         super();
         this.target = target;
         if (manager) {
@@ -11,6 +21,11 @@ export default class Tween extends PIXI.utils.EventEmitter{
         this.clear();
     }
 
+    /**
+     * Add the tween to a manager
+     *
+     * @param {PIXI.tween.TweenManager} manager - Tween manager to handle this tween
+     */
     addTo(manager) {
         this.manager = manager;
         this.manager.addTween(this);
@@ -18,6 +33,12 @@ export default class Tween extends PIXI.utils.EventEmitter{
         return this;
     }
 
+    /**
+     * Chain another tween to play after this tween has ended
+     *
+     * @param {PIXI.tween.Tween} tween - Tween to chain
+     * @returns {PIXI.tween.Tween}
+     */
     chain(tween) {
         if (!tween) {
             tween = new Tween(this.target);
@@ -27,6 +48,12 @@ export default class Tween extends PIXI.utils.EventEmitter{
         return tween;
     }
 
+    /**
+     * Starts the tween playing
+     *
+     * @param {Promise} resolve - Promise to resolve when the tween has ended
+     * @returns {PIXI.tween.Tween}
+     */
     start(resolve) {
         this.active = true;
         this.isStarted = false;
@@ -38,6 +65,11 @@ export default class Tween extends PIXI.utils.EventEmitter{
         return this;
     }
 
+    /**
+     * Starts the tween playing, whilst returning a new promise
+     *
+     * @returns {Promise}
+     */
     startPromise() {
         if (!Promise) {
             return this.start();
@@ -52,6 +84,12 @@ export default class Tween extends PIXI.utils.EventEmitter{
         });
   	}
 
+    /**
+     * Stop the tweens progress
+     *
+     * @param {boolean} [end=false] - Force end to be called
+     * @returns {PIXI.tween.Tween}
+     */
     stop(end = false) {
         this.active = false;
         this.emit('stop');
@@ -63,18 +101,36 @@ export default class Tween extends PIXI.utils.EventEmitter{
         return this;
     }
 
+     /**
+     * Set the end data for the tween
+     *
+     * @param {Object} data - Object containing end point data for the tween
+     * @returns {PIXI.tween.Tween}
+     */
     to(data = {}) {
         this._to = data;
 
         return this;
     }
 
+    /**
+     * Set the start point data for the tween.
+     * If nothing is set, data is reset so that starting the tween will use the objects current state as the start point
+     *
+     * @param {Object} [data={}] - Object containing start point data for the tween
+     * @returns {PIXI.tween.Tween}
+     */
     from(data = {}) {
         this._from = data;
 
         return this;
     }
 
+    /**
+     * Remove the tween from the manager if it has one
+     *
+     * @returns {PIXI.tween.Tween}
+     */
     remove() {
         if (!this.manager) {
             return this;
@@ -85,6 +141,9 @@ export default class Tween extends PIXI.utils.EventEmitter{
         return this;
     }
 
+    /**
+     * Clears all class data, meaning that the tween will now do nothing if start is called
+     */
     clear() {
         this._time = 1;
         this.active = false;
@@ -114,6 +173,11 @@ export default class Tween extends PIXI.utils.EventEmitter{
         this._resolvePromise = null;
     }
 
+    /**
+     * Resets the tween to it's default state, but keeping any to and from data, so start can be called to replay the tween
+     *
+     * @returns {PIXI.tween.Tween}
+     */
     reset() {
         this.elapsedTime = 0;
         this._repeat = 0;
@@ -133,6 +197,13 @@ export default class Tween extends PIXI.utils.EventEmitter{
         return this;
     }
 
+    /**
+     * Set the start point data for the tween.
+     * If nothing is set, data is reset so that starting the tween will use the objects current state as the start point
+     *
+     * @param {delta} [data={}]- Scalar time value from last update to this update.
+     * @param {number} deltaMS - Time elapsed in milliseconds from last update to this update.
+     */
     update(delta, deltaMS) {
         if (!this._canUpdate() && (this._to || this.path)) {
             return;
@@ -213,11 +284,17 @@ export default class Tween extends PIXI.utils.EventEmitter{
         }
     }
 
+    /**
+     * The current elapsed progress time in ms for the tween.
+     * Defaults to 1 rather than 0, as a hack around a bug of starting a tween with 0 time, and nothing happens
+     *
+     * @member {number}
+     */
     get time() {
         return this._time;
     }
 
-    set time(value) {
+    set time(value) { // eslint-disable-line require-jsdoc
         this._time = value || 1;
     }
 

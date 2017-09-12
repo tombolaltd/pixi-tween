@@ -13,6 +13,9 @@ PIXI.Graphics.prototype.drawPath = function(path) {
     return this;
 }
 
+/**
+ * @namespace PIXI.tween
+ */
 let tween = {
     TweenManager: TweenManager,
     Tween: Tween,
