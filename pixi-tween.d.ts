@@ -10,7 +10,7 @@ declare namespace PIXI {
 
     namespace tween {
         class Tween {
-            constructor(target: Object, manager: PIXI.tween.TweenManager);
+            constructor(target: object, manager: PIXI.tween.TweenManager);
             readonly active: boolean;
             delay: number;
             easing: PIXI.tween.Easing;
@@ -27,17 +27,17 @@ declare namespace PIXI {
             addTo(manager: PIXI.tween.TweenManager): PIXI.tween.Tween;
             chain(tween: PIXI.tween.Tween): PIXI.tween.Tween;
             clear(): PIXI.tween.Tween;
-            from(data?: Object): PIXI.tween.Tween;
+            from(data?: object): PIXI.tween.Tween;
             remove(): PIXI.tween.Tween;
             reset(): PIXI.tween.Tween;
             start(resolve?: Promise<any>): PIXI.tween.Tween;
             startPromise(): Promise<any>;
             stop(end?: boolean): PIXI.tween.Tween;
-            to(data: Object): PIXI.tween.Tween;
+            to(data: object): PIXI.tween.Tween;
             update(deltaMS: number);
-            once(event: string, fn: () => void, context?: any);
-            on(event: string, fn: Function, context?: any);
-            off(event: string, fn: Function, context?: any, once?: boolean);
+            once(event: "start" | "end" | "repeat" | "update" | "stop" | "pingpong", fn: Function, context?: any);
+            on(event: "start" | "end" | "repeat" | "update" | "stop" | "pingpong", fn: Function, context?: any);
+            off(event: "start" | "end" | "repeat" | "update" | "stop" | "pingpong", fn: Function, context?: any, once?: boolean);
         }
 
         interface Easing {
@@ -78,8 +78,8 @@ declare namespace PIXI {
             constructor();
             tweens: Array<PIXI.tween.Tween>;
             addTween(tween: PIXI.tween.Tween);
-            createTween(target: Object): PIXI.tween.Tween;
-            getTweensForTarget(target: Object): Array<PIXI.tweenTween>;
+            createTween(target: object): PIXI.tween.Tween;
+            getTweensForTarget(target: object): Array<PIXI.tweenTween>;
             removeTween(tween: PIXI.tween.Tween);
             update(deltaMS: number);
         }
