@@ -6,15 +6,6 @@ pixi-tween is a plugin for Pixi.js v4.1.0 or higher to create tween animations.
 ## API documentation
 [JSDocs](https://themoonrat.github.io/pixi-tween/docs/index.html)
 
-## Online examples
-[Easing](https://themoonrat.github.io/pixi-tween/examples/easing.html)
-[TweenPath](https://themoonrat.github.io/pixi-tween/examples/path.html)
-
-## Installation
-```
-npm install pixi-tween
-```
-
 ## Usage
 ### Rollup / Browserify / Webpack
 If you use Browserify or Webpack you can use pixi-tween like this:
@@ -80,3 +71,7 @@ app.ticker.add(function(delta) {
     PIXI.tweenManager.update();
 });
 ```
+
+## Other examples
+ [Easing](https://themoonrat.github.io/pixi-tween/examples/easing.html)
+ [TweenPath](https://themoonrat.github.io/pixi-tween/examples/path.html)
