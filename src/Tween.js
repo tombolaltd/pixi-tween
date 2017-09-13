@@ -326,7 +326,7 @@ export default class Tween extends PIXI.utils.EventEmitter {
         let _to;
         let _from;
 
-        if (time > this.elapsedTime) {
+        if (time >= this.elapsedTime) {
             const t = this.elapsedTime + deltaMS;
             const ended = (t >= time);
 
@@ -455,7 +455,7 @@ export default class Tween extends PIXI.utils.EventEmitter {
             const b = this._pathFrom;
             const c = this._pathTo - this._pathFrom;
             const d = time;
-            const t = this.elapsedTime / d;
+            const t = time ? this.elapsedTime / d : 1;
 
             const distance = b + (c * this.easing(t));
             const pos = this.path.getPointAtDistance(distance);
@@ -465,7 +465,7 @@ export default class Tween extends PIXI.utils.EventEmitter {
     }
 
     /**
-     * Can this tween be updated (must have a duration, be active and have a target destination)
+     * Can this tween be updated (must be active and have a target destination)
      *
      * @returns {boolean} - True if this tween can be updated
      * @private
@@ -475,17 +475,17 @@ export default class Tween extends PIXI.utils.EventEmitter {
     }
 }
 
-function _recursiveApplyTween(to, from, target, time, elapsed, easing) {
+function _recursiveApplyTween(to, from, target, time, elapsedTime, easing) {
     for (const k in to) {
         if (!_isObject(to[k])) {
             const b = from[k];
             const c = to[k] - from[k];
             const d = time;
-            const t = elapsed / d;
+            const t = time ? elapsedTime / d : 1;
 
             target[k] = b + (c * easing(t));
         } else {
-            _recursiveApplyTween(to[k], from[k], target[k], time, elapsed, easing);
+            _recursiveApplyTween(to[k], from[k], target[k], time, elapsedTime, easing);
         }
     }
 }

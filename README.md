@@ -68,10 +68,11 @@ document.body.appendChild(app.view);
 
 const sprite = new PIXI.Sprite(PIXI.Texture.WHITE);
 const tween = PIXI.tweenManager.createTween(sprite);
-tween.from({ x: 0 }).to({ x: 100 })
-tween.time = 100;
+tween.from({ x: 0 }).to({ x: 250 })
+tween.time = 1000;
+tween.repeat = 10;
 tween.on('start', () => { console.log('tween started') });
-tween.on('update', ( delta ) => { console.log('tween updated: ' + delta) });
+tween.on('repeat', ( loopCount ) => { console.log('loopCount: ' + loopCount) });
 tween.start();
 
 // Listen for animate update and update the tween manager

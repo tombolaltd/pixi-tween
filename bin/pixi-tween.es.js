@@ -1,6 +1,6 @@
 /*!
  * pixi-tween - v1.0.0
- * Compiled Wed, 13 Sep 2017 13:42:11 UTC
+ * Compiled Wed, 13 Sep 2017 14:15:33 UTC
  *
  * pixi-tween is licensed under the MIT License.
  * http://www.opensource.org/licenses/mit-license
@@ -1056,7 +1056,7 @@ var Tween = function (_PIXI$utils$EventEmit) {
             var _to = void 0;
             var _from = void 0;
 
-            if (time > this.elapsedTime) {
+            if (time >= this.elapsedTime) {
                 var t = this.elapsedTime + deltaMS;
                 var ended = t >= time;
 
@@ -1194,7 +1194,7 @@ var Tween = function (_PIXI$utils$EventEmit) {
                 var b = this._pathFrom;
                 var c = this._pathTo - this._pathFrom;
                 var d = _time;
-                var t = this.elapsedTime / d;
+                var t = _time ? this.elapsedTime / d : 1;
 
                 var distance = b + c * this.easing(t);
                 var pos = this.path.getPointAtDistance(distance);
@@ -1204,7 +1204,7 @@ var Tween = function (_PIXI$utils$EventEmit) {
         }
 
         /**
-         * Can this tween be updated (must have a duration, be active and have a target destination)
+         * Can this tween be updated (must be active and have a target destination)
          *
          * @returns {boolean} - True if this tween can be updated
          * @private
@@ -1250,17 +1250,17 @@ var Tween = function (_PIXI$utils$EventEmit) {
     return Tween;
 }(PIXI.utils.EventEmitter);
 
-function _recursiveApplyTween(to, from, target, time, elapsed, easing) {
+function _recursiveApplyTween(to, from, target, time, elapsedTime, easing) {
     for (var k in to) {
         if (!_isObject(to[k])) {
             var b = from[k];
             var c = to[k] - from[k];
             var d = time;
-            var t = elapsed / d;
+            var t = time ? elapsedTime / d : 1;
 
             target[k] = b + c * easing(t);
         } else {
-            _recursiveApplyTween(to[k], from[k], target[k], time, elapsed, easing);
+            _recursiveApplyTween(to[k], from[k], target[k], time, elapsedTime, easing);
         }
     }
 }
