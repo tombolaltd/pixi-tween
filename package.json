@@ -1,9 +1,12 @@
 {
   "name": "pixi-tween",
-  "version": "0.2.0",
-  "description": "pixi-tween is a plugin for Pixi.js v4.1 or higher to create ...",
+  "version": "0.5.0",
+  "description": "pixi-tween is a plugin for Pixi.js v4.1.0 or higher to create ...",
   "main": "./build/pixi-tween.js",
   "author": "Nazariglez <nazari.nz@gmail.com> (http://www.nazariglez.com)",
+  "contributors": [
+    "Dave Moore <themoonrat@gmail.com>"
+  ],
   "license": "MIT",
   "keywords": [
     "pixi",
@@ -11,10 +14,10 @@
     "animation",
     "tween"
   ],
-  "homepage": "https://github.com/Nazariglez/pixi-tween",
+  "homepage": "https://github.com/themoonrat/pixi-tween",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Nazariglez/pixi-tween.git"
+    "url": "https://github.com/themoonrat/pixi-tween.git"
   },
   "scripts": {
     "prepublish": "npm run build",
