@@ -1,6 +1,6 @@
 /*!
- * pixi-tween - v1.0.0
- * Compiled Wed, 13 Sep 2017 15:48:30 UTC
+ * pixi-tween - v0.5.0
+ * Compiled Wed, 13 Sep 2017 16:57:32 UTC
  *
  * pixi-tween is licensed under the MIT License.
  * http://www.opensource.org/licenses/mit-license
