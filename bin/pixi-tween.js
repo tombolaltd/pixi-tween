@@ -1,6 +1,6 @@
 /*!
  * pixi-tween - v1.0.0
- * Compiled Wed, 13 Sep 2017 08:53:54 UTC
+ * Compiled Wed, 13 Sep 2017 13:42:06 UTC
  *
  * pixi-tween is licensed under the MIT License.
  * http://www.opensource.org/licenses/mit-license
@@ -14,42 +14,101 @@
 
 if (typeof PIXI === 'undefined') { throw 'PixiJS is required'; }
 
+/* eslint-disable no-mixed-operators */
+
+/**
+ * @namespace PIXI.tween.Easing
+ */
 var Easing = {
+    /**
+     * linear tween
+     *
+     * @memberof PIXI.tween.Easing
+     * @returns {function} - New instance of linear easing function
+     */
     linear: function linear() {
-        return function (t) {
+        return function linear(t) {
             return t;
         };
     },
+
+
+    /**
+     * inQuad tween
+     *
+     * @memberof PIXI.tween.Easing
+     * @returns {function} - New instance of inQuad easing function
+     */
     inQuad: function inQuad() {
-        return function (t) {
+        return function inQuad(t) {
             return t * t;
         };
     },
+
+
+    /**
+     * outQuad tween
+     *
+     * @memberof PIXI.tween.Easing
+     * @returns {function} - New instance of outQuad easing function
+     */
     outQuad: function outQuad() {
-        return function (t) {
+        return function outQuad(t) {
             return t * (2 - t);
         };
     },
+
+
+    /**
+     * inOutQuad tween
+     *
+     * @memberof PIXI.tween.Easing
+     * @returns {function} - New instance of inOutQuad easing function
+     */
     inOutQuad: function inOutQuad() {
-        return function (t) {
+        return function inOutQuad(t) {
             t *= 2;
             if (t < 1) return 0.5 * t * t;
 
             return -0.5 * (--t * (t - 2) - 1);
         };
     },
+
+
+    /**
+     * inCubic tween
+     *
+     * @memberof PIXI.tween.Easing
+     * @returns {function} - New instance of inCubic easing function
+     */
     inCubic: function inCubic() {
-        return function (t) {
+        return function inCubic(t) {
             return t * t * t;
         };
     },
+
+
+    /**
+     * outCubic tween
+     *
+     * @memberof PIXI.tween.Easing
+     * @returns {function} - New instance of outCubic easing function
+     */
     outCubic: function outCubic() {
-        return function (t) {
+        return function outCubic(t) {
             return --t * t * t + 1;
         };
     },
+
+
+    /**
+     * inOutCubic tween
+     *
+     * @memberof PIXI.tween.Easing
+     * @returns {function} - New instance of inOutCubic easing function
+     */
     inOutCubic: function inOutCubic() {
-        return function (t) {
+        return function inOutCubic(t) {
             t *= 2;
             if (t < 1) return 0.5 * t * t * t;
             t -= 2;
@@ -57,18 +116,42 @@ var Easing = {
             return 0.5 * (t * t * t + 2);
         };
     },
+
+
+    /**
+     * inQuart tween
+     *
+     * @memberof PIXI.tween.Easing
+     * @returns {function} - New instance of inQuart easing function
+     */
     inQuart: function inQuart() {
-        return function (t) {
+        return function inQuart(t) {
             return t * t * t * t;
         };
     },
+
+
+    /**
+     * outQuart tween
+     *
+     * @memberof PIXI.tween.Easing
+     * @returns {function} - New instance of outQuart easing function
+     */
     outQuart: function outQuart() {
-        return function (t) {
+        return function outQuart(t) {
             return 1 - --t * t * t * t;
         };
     },
+
+
+    /**
+     * inOutQuart tween
+     *
+     * @memberof PIXI.tween.Easing
+     * @returns {function} - New instance of inOutQuart easing function
+     */
     inOutQuart: function inOutQuart() {
-        return function (t) {
+        return function inOutQuart(t) {
             t *= 2;
             if (t < 1) return 0.5 * t * t * t * t;
             t -= 2;
@@ -76,18 +159,42 @@ var Easing = {
             return -0.5 * (t * t * t * t - 2);
         };
     },
+
+
+    /**
+     * inQuint tween
+     *
+     * @memberof PIXI.tween.Easing
+     * @returns {function} - New instance of inQuint easing function
+     */
     inQuint: function inQuint() {
-        return function (t) {
+        return function inQuint(t) {
             return t * t * t * t * t;
         };
     },
+
+
+    /**
+     * outQuint tween
+     *
+     * @memberof PIXI.tween.Easing
+     * @returns {function} - New instance of outQuint easing function
+     */
     outQuint: function outQuint() {
-        return function (t) {
+        return function outQuint(t) {
             return --t * t * t * t * t + 1;
         };
     },
+
+
+    /**
+     * inOutQuint tween
+     *
+     * @memberof PIXI.tween.Easing
+     * @returns {function} - New instance of inOutQuint easing function
+     */
     inOutQuint: function inOutQuint() {
-        return function (t) {
+        return function inOutQuint(t) {
             t *= 2;
             if (t < 1) return 0.5 * t * t * t * t * t;
             t -= 2;
@@ -95,33 +202,81 @@ var Easing = {
             return 0.5 * (t * t * t * t * t + 2);
         };
     },
+
+
+    /**
+     * inSine tween
+     *
+     * @memberof PIXI.tween.Easing
+     * @returns {function} - New instance of inSine easing function
+     */
     inSine: function inSine() {
-        return function (t) {
+        return function inSine(t) {
             return 1 - Math.cos(t * Math.PI / 2);
         };
     },
+
+
+    /**
+     * outSine tween
+     *
+     * @memberof PIXI.tween.Easing
+     * @returns {function} - New instance of outSine easing function
+     */
     outSine: function outSine() {
-        return function (t) {
+        return function outSine(t) {
             return Math.sin(t * Math.PI / 2);
         };
     },
+
+
+    /**
+     * inOutSine tween
+     *
+     * @memberof PIXI.tween.Easing
+     * @returns {function} - New instance of inOutSine easing function
+     */
     inOutSine: function inOutSine() {
-        return function (t) {
+        return function inOutSine(t) {
             return 0.5 * (1 - Math.cos(Math.PI * t));
         };
     },
+
+
+    /**
+     * inExpo tween
+     *
+     * @memberof PIXI.tween.Easing
+     * @returns {function} - New instance of inExpo easing function
+     */
     inExpo: function inExpo() {
-        return function (t) {
+        return function inExpo(t) {
             return t === 0 ? 0 : Math.pow(1024, t - 1);
         };
     },
+
+
+    /**
+     * outExpo tween
+     *
+     * @memberof PIXI.tween.Easing
+     * @returns {function} - New instance of outExpo easing function
+     */
     outExpo: function outExpo() {
-        return function (t) {
+        return function outExpo(t) {
             return t === 1 ? 1 : 1 - Math.pow(2, -10 * t);
         };
     },
+
+
+    /**
+     * inOutExpo tween
+     *
+     * @memberof PIXI.tween.Easing
+     * @returns {function} - New instance of inOutExpo easing function
+     */
     inOutExpo: function inOutExpo() {
-        return function (t) {
+        return function inOutExpo(t) {
             if (t === 0) return 0;
             if (t === 1) return 1;
             t *= 2;
@@ -130,91 +285,184 @@ var Easing = {
             return 0.5 * (-Math.pow(2, -10 * (t - 1)) + 2);
         };
     },
+
+
+    /**
+     * inCirc tween
+     *
+     * @memberof PIXI.tween.Easing
+     * @returns {function} - New instance of inCirc easing function
+     */
     inCirc: function inCirc() {
-        return function (t) {
+        return function inCirc(t) {
             return 1 - Math.sqrt(1 - t * t);
         };
     },
+
+
+    /**
+     * outCirc tween
+     *
+     * @memberof PIXI.tween.Easing
+     * @returns {function} - New instance of outCirc easing function
+     */
     outCirc: function outCirc() {
-        return function (t) {
+        return function outCirc(t) {
             return Math.sqrt(1 - --t * t);
         };
     },
+
+
+    /**
+     * inOutCirc tween
+     *
+     * @memberof PIXI.tween.Easing
+     * @returns {function} - New instance of inOutCirc easing function
+     */
     inOutCirc: function inOutCirc() {
-        return function (t) {
+        return function inOutCirc(t) {
             t *= 2;
             if (t < 1) return -0.5 * (Math.sqrt(1 - t * t) - 1);
 
             return 0.5 * (Math.sqrt(1 - (t - 2) * (t - 2)) + 1);
         };
     },
+
+
+    /**
+     * inElastic tween
+     *
+     * @memberof PIXI.tween.Easing
+     * @param {number} [a=0.1] - a
+     * @param {number} [p=0.4] - p
+     * @returns {function} - New instance of inElastic easing function
+     */
     inElastic: function inElastic() {
         var a = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0.1;
         var p = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0.4;
 
-        return function (t) {
+        return function inElastic(t) {
             var s = void 0;
 
             if (t === 0) return 0;
             if (t === 1) return 1;
             if (!a || a < 1) {
                 a = 1;s = p / 4;
-            } else s = p * Math.asin(1 / a) / (2 * Math.PI);
+            } else {
+                s = p * Math.asin(1 / a) / (2 * Math.PI);
+            }
 
             return -(a * Math.pow(2, 10 * (t - 1)) * Math.sin((t - 1 - s) * (2 * Math.PI) / p));
         };
     },
+
+
+    /**
+     * outElastic tween
+     *
+     * @memberof PIXI.tween.Easing
+     * @param {number} [a=0.1] - a
+     * @param {number} [p=0.4] - p
+     * @returns {function} - New instance of outElastic easing function
+     */
     outElastic: function outElastic() {
         var a = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0.1;
         var p = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0.4;
 
-        return function (t) {
+        return function outElastic(t) {
             var s = void 0;
 
             if (t === 0) return 0;
             if (t === 1) return 1;
             if (!a || a < 1) {
                 a = 1;s = p / 4;
-            } else s = p * Math.asin(1 / a) / (2 * Math.PI);
+            } else {
+                s = p * Math.asin(1 / a) / (2 * Math.PI);
+            }
 
             return a * Math.pow(2, -10 * t) * Math.sin((t - s) * (2 * Math.PI) / p) + 1;
         };
     },
+
+
+    /**
+     * inOutElastic tween
+     *
+     * @memberof PIXI.tween.Easing
+     * @param {number} [a=0.1] - a
+     * @param {number} [p=0.4] - p
+     * @returns {function} - New instance of inOutElastic easing function
+     */
     inOutElastic: function inOutElastic() {
         var a = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0.1;
         var p = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0.4;
 
-        return function (t) {
+        return function inOutElastic(t) {
             var s = void 0;
 
             if (t === 0) return 0;
             if (t === 1) return 1;
             if (!a || a < 1) {
                 a = 1;s = p / 4;
-            } else s = p * Math.asin(1 / a) / (2 * Math.PI);
+            } else {
+                s = p * Math.asin(1 / a) / (2 * Math.PI);
+            }
             t *= 2;
             if (t < 1) return -0.5 * (a * Math.pow(2, 10 * (t - 1)) * Math.sin((t - 1 - s) * (2 * Math.PI) / p));
 
             return a * Math.pow(2, -10 * (t - 1)) * Math.sin((t - 1 - s) * (2 * Math.PI) / p) * 0.5 + 1;
         };
     },
-    inBack: function inBack(v) {
-        return function (t) {
-            var s = v || 1.70158;
+
+
+    /**
+     * inBack tween
+     *
+     * @memberof PIXI.tween.Easing
+     * @param {number} [v=1.70158] - v
+     * @returns {function} - New instance of inBack easing function
+     */
+    inBack: function inBack() {
+        var v = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1.70158;
+
+        return function inBack(t) {
+            var s = v;
 
             return t * t * ((s + 1) * t - s);
         };
     },
-    outBack: function outBack(v) {
-        return function (t) {
-            var s = v || 1.70158;
+
+
+    /**
+     * outBack tween
+     *
+     * @memberof PIXI.tween.Easing
+     * @param {number} [v=1.70158] - v
+     * @returns {function} - New instance of outBack easing function
+     */
+    outBack: function outBack() {
+        var v = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1.70158;
+
+        return function outBack(t) {
+            var s = v;
 
             return --t * t * ((s + 1) * t + s) + 1;
         };
     },
-    inOutBack: function inOutBack(v) {
-        return function (t) {
-            var s = (v || 1.70158) * 1.525;
+
+
+    /**
+     * inOutBack tween
+     *
+     * @memberof PIXI.tween.Easing
+     * @param {number} [v=1.70158] - v
+     * @returns {function} - New instance of inOutBack easing function
+     */
+    inOutBack: function inOutBack() {
+        var v = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1.70158;
+
+        return function inOutBack(t) {
+            var s = v * 1.525;
 
             t *= 2;
             if (t < 1) return 0.5 * (t * t * ((s + 1) * t - s));
@@ -222,13 +470,29 @@ var Easing = {
             return 0.5 * ((t - 2) * (t - 2) * ((s + 1) * (t - 2) + s) + 2);
         };
     },
+
+
+    /**
+     * inBounce tween
+     *
+     * @memberof PIXI.tween.Easing
+     * @returns {function} - New instance of inBounce easing function
+     */
     inBounce: function inBounce() {
-        return function (t) {
+        return function inBounce(t) {
             return 1 - Easing.outBounce()(1 - t);
         };
     },
+
+
+    /**
+     * outBounce tween
+     *
+     * @memberof PIXI.tween.Easing
+     * @returns {function} - New instance of outBounce easing function
+     */
     outBounce: function outBounce() {
-        return function (t) {
+        return function outBounce(t) {
             if (t < 1 / 2.75) {
                 return 7.5625 * t * t;
             } else if (t < 2 / 2.75) {
@@ -245,19 +509,19 @@ var Easing = {
             return 7.5625 * t * t + 0.984375;
         };
     },
+
+
+    /**
+     * inOutBounce tween
+     *
+     * @memberof PIXI.tween.Easing
+     * @returns {function} - New instance of inOutBounce easing function
+     */
     inOutBounce: function inOutBounce() {
-        return function (t) {
+        return function inOutBounce(t) {
             if (t < 0.5) return Easing.inBounce()(t * 2) * 0.5;
 
             return Easing.outBounce()(t * 2 - 1) * 0.5 + 0.5;
-        };
-    },
-    customArray: function customArray(arr) {
-        if (!arr) return Easing.linear();
-
-        return function (t) {
-            // todo: convert array => ease
-            return t;
         };
     }
 };
@@ -446,6 +710,45 @@ var possibleConstructorReturn = function (self, call) {
 };
 
 /**
+ * Fired when the tween starts. If the tween has a delay, this event fires when the delay time is ended.
+ *
+ * @event PIXI.tween.Tween#start
+ */
+
+/**
+ * Fired when the tween is over. If the .loop option it's true, this event never will be fired.
+ * If the tween has an .repeat number, this event will be fired just when all the repeats are done.
+ *
+ * @event PIXI.tween.Tween#end
+ */
+
+/**
+ * Fired at every repeat cycle, if your tween has .repeat=5 this events will be fired 5 times.
+ *
+ * @event PIXI.tween.Tween#repeat
+ * @param {number} repeat - Number of times this tween has repeated
+ */
+
+/**
+ * Fired at each frame
+ *
+ * @event PIXI.tween.Tween#update
+ * @param {number} elapsedTime - Time in ms since last update event was emitted
+ */
+
+/**
+ * Fired only when it's used the .stop() method. It's useful to know when a timer is cancelled.
+ *
+ * @event PIXI.tween.Tween#stop
+ */
+
+/**
+ * If the pingPong option it's true, this events will be fired when the tweens returns back.
+ *
+ * @event PIXI.tween.Tween#pingpong
+ */
+
+/**
  * Tween class
  *
  * @class
@@ -457,7 +760,7 @@ var Tween = function (_PIXI$utils$EventEmit) {
 
     /**
      * @param {*} target - Target object to tween
-     * @param {PIXI.tween.TweenManager} manager - Tween manager to handle this tween
+     * @param {PIXI.tween.TweenManager} [manager] - Tween manager to handle this tween
      */
     function Tween(target, manager) {
         classCallCheck(this, Tween);
@@ -473,14 +776,77 @@ var Tween = function (_PIXI$utils$EventEmit) {
     }
 
     /**
-     * Add the tween to a manager
-     *
-     * @param {PIXI.tween.TweenManager} manager - Tween manager to handle this tween
+     * Clears all class data, meaning that the tween will now do nothing if start is called
      */
 
 
     createClass(Tween, [{
+        key: 'clear',
+        value: function clear() {
+            /** @member {PIXI.tween.Easing} - Either an easing function from PIXI.tween.Easing or a custom easing */
+            this.easing = Easing.linear();
+
+            /** @member {boolean} - Set true if you want to delete this instance when the animation it's done */
+            this.expire = false;
+
+            /** @member {number} - Times to repeat this tween */
+            this.repeat = 0;
+
+            /** @member {boolean} - Set true if you want to loop this tween forever */
+            this.loop = false;
+
+            /** @member {number} - Set a delay time in milliseconds before the tween starts */
+            this.delay = 0;
+
+            /** @member {boolean} - Set true to repeat the tween from the end point back to the start point */
+            this.pingPong = false;
+
+            /** @member {PIXI.tween.TweenPath} - Set an instance of TweenPath to animate an object along the path */
+            this.path = null;
+
+            /** @member {boolean} - Set true to reverse the direction along the path */
+            this.pathReverse = false;
+
+            /** @member {number} - How much time has passed on an active tween */
+            this.elapsedTime = 0;
+
+            /** @member {number} - The current elapsed progress time in ms for the tween */
+            this.time = 0;
+
+            this._active = false;
+            this._isStarted = false;
+            this._isEnded = false;
+
+            this._to = {};
+            this._from = {};
+            this._delayTime = 0;
+            this._repeat = 0;
+            this._pingPong = false;
+
+            this._pathFrom = 0;
+            this._pathTo = 0;
+
+            this._chainTween = null;
+            this._resolvePromise = null;
+        }
+
+        /**
+         * True if the tween is running
+         *
+         * @member {boolean}
+         * @readonly
+         */
+
+    }, {
         key: 'addTo',
+
+
+        /**
+         * Add the tween to a manager
+         *
+         * @param {PIXI.tween.TweenManager} manager - Tween manager to handle this tween
+         * @returns {PIXI.tween.Tween} - This tween instance
+         */
         value: function addTo(manager) {
             this.manager = manager;
             this.manager.addTween(this);
@@ -489,35 +855,35 @@ var Tween = function (_PIXI$utils$EventEmit) {
         }
 
         /**
-         * Chain another tween to play after this tween has ended
+         * Remove the tween from the manager if it has one
          *
-         * @param {PIXI.tween.Tween} tween - Tween to chain
-         * @returns {PIXI.tween.Tween}
+         * @returns {PIXI.tween.Tween} - This tween instance
          */
 
     }, {
-        key: 'chain',
-        value: function chain(tween) {
-            if (!tween) {
-                tween = new Tween(this.target);
+        key: 'remove',
+        value: function remove() {
+            if (!this.manager) {
+                return this;
             }
-            this._chainTween = tween;
 
-            return tween;
+            this.manager.removeTween(this);
+
+            return this;
         }
 
         /**
-         * Starts the tween playing
+         * Starts the tween
          *
          * @param {Promise} resolve - Promise to resolve when the tween has ended
-         * @returns {PIXI.tween.Tween}
+         * @returns {PIXI.tween.Tween} - This tween instance
          */
 
     }, {
         key: 'start',
         value: function start(resolve) {
-            this.active = true;
-            this.isStarted = false;
+            this._active = true;
+            this._isStarted = false;
 
             if (!this._resolvePromise && resolve) {
                 this._resolvePromise = resolve;
@@ -527,9 +893,9 @@ var Tween = function (_PIXI$utils$EventEmit) {
         }
 
         /**
-         * Starts the tween playing, whilst returning a new promise
+         * Starts the tween, whilst returning a new promise
          *
-         * @returns {Promise}
+         * @returns {Promise} - Promsie that will resolve when the tween has finished
          */
 
     }, {
@@ -545,7 +911,7 @@ var Tween = function (_PIXI$utils$EventEmit) {
                 return Promise.resolve();
             }
 
-            return new Promise(function (resolve, reject) {
+            return new Promise(function (resolve) {
                 _this2.start(resolve);
             });
         }
@@ -553,8 +919,10 @@ var Tween = function (_PIXI$utils$EventEmit) {
         /**
          * Stop the tweens progress
          *
+         * @fires PIXI.tween.Tween#stop
+         *
          * @param {boolean} [end=false] - Force end to be called
-         * @returns {PIXI.tween.Tween}
+         * @returns {PIXI.tween.Tween} - This tween instance
          */
 
     }, {
@@ -562,7 +930,7 @@ var Tween = function (_PIXI$utils$EventEmit) {
         value: function stop() {
             var end = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : false;
 
-            this.active = false;
+            this._active = false;
             this.emit('stop');
 
             if (end) {
@@ -575,8 +943,11 @@ var Tween = function (_PIXI$utils$EventEmit) {
         /**
          * Set the end data for the tween
          *
+         * @example
+         * tween.to { x:100, y:100 }
+         *
          * @param {Object} data - Object containing end point data for the tween
-         * @returns {PIXI.tween.Tween}
+         * @returns {PIXI.tween.Tween} - This tween instance
          */
 
     }, {
@@ -593,8 +964,11 @@ var Tween = function (_PIXI$utils$EventEmit) {
          * Set the start point data for the tween.
          * If nothing is set, data is reset so that starting the tween will use the objects current state as the start point
          *
+         * @example
+         * tween.from { x:50, y:50 }
+         *
          * @param {Object} [data={}] - Object containing start point data for the tween
-         * @returns {PIXI.tween.Tween}
+         * @returns {PIXI.tween.Tween} - This tween instance
          */
 
     }, {
@@ -608,62 +982,27 @@ var Tween = function (_PIXI$utils$EventEmit) {
         }
 
         /**
-         * Remove the tween from the manager if it has one
+         * Chain another tween to play after this tween has ended
          *
-         * @returns {PIXI.tween.Tween}
+         * @param {PIXI.tween.Tween} tween - Tween to chain
+         * @returns {PIXI.tween.Tween} - This tween instance
          */
 
     }, {
-        key: 'remove',
-        value: function remove() {
-            if (!this.manager) {
-                return this;
+        key: 'chain',
+        value: function chain(tween) {
+            if (!tween) {
+                tween = new Tween(this.target);
             }
+            this._chainTween = tween;
 
-            this.manager.removeTween(this);
-
-            return this;
-        }
-
-        /**
-         * Clears all class data, meaning that the tween will now do nothing if start is called
-         */
-
-    }, {
-        key: 'clear',
-        value: function clear() {
-            this._time = 1;
-            this.active = false;
-            this.easing = Easing.linear();
-            this.expire = false;
-            this.repeat = 0;
-            this.loop = false;
-            this.delay = 0;
-            this.pingPong = false;
-            this.isStarted = false;
-            this.isEnded = false;
-
-            this._to = {};
-            this._from = {};
-            this._delayTime = 0;
-            this.elapsedTime = 0;
-            this._repeat = 0;
-            this._pingPong = false;
-
-            this._chainTween = null;
-
-            this.path = null;
-            this.pathReverse = false;
-            this.pathFrom = 0;
-            this.pathTo = 0;
-
-            this._resolvePromise = null;
+            return tween;
         }
 
         /**
          * Resets the tween to it's default state, but keeping any to and from data, so start can be called to replay the tween
          *
-         * @returns {PIXI.tween.Tween}
+         * @returns {PIXI.tween.Tween} - This tween instance
          */
 
     }, {
@@ -672,8 +1011,8 @@ var Tween = function (_PIXI$utils$EventEmit) {
             this.elapsedTime = 0;
             this._repeat = 0;
             this._delayTime = 0;
-            this.isStarted = false;
-            this.isEnded = false;
+            this._isStarted = false;
+            this._isEnded = false;
 
             if (this.pingPong && this._pingPong) {
                 var _to = this._to;
@@ -689,16 +1028,19 @@ var Tween = function (_PIXI$utils$EventEmit) {
         }
 
         /**
-         * Set the start point data for the tween.
-         * If nothing is set, data is reset so that starting the tween will use the objects current state as the start point
+         * Updating of the tween; usually automatically called by its manager
          *
-         * @param {delta} [data={}]- Scalar time value from last update to this update.
+         * @fires PIXI.tween.Tween#start
+         * @fires PIXI.tween.Tween#update
+         * @fires PIXI.tween.Tween#pingpong
+         * @fires PIXI.tween.Tween#repeat
+         *
          * @param {number} deltaMS - Time elapsed in milliseconds from last update to this update.
          */
 
     }, {
         key: 'update',
-        value: function update(delta, deltaMS) {
+        value: function update(deltaMS) {
             if (!this._canUpdate() && (this._to || this.path)) {
                 return;
             }
@@ -709,14 +1051,14 @@ var Tween = function (_PIXI$utils$EventEmit) {
                 return;
             }
 
-            if (!this.isStarted) {
+            if (!this._isStarted) {
                 this._parseData();
-                this.isStarted = true;
-                this.isEnded = false;
+                this._isStarted = true;
+                this._isEnded = false;
                 this.emit('start');
             }
 
-            var time = this.pingPong ? this._time / 2 : this._time;
+            var time = this.pingPong ? this.time / 2 : this.time;
             var _to = void 0;
             var _from = void 0;
 
@@ -740,10 +1082,10 @@ var Tween = function (_PIXI$utils$EventEmit) {
                         this._to = _from;
 
                         if (this.path) {
-                            _to = this.pathTo;
-                            _from = this.pathFrom;
-                            this.pathTo = _from;
-                            this.pathFrom = _to;
+                            _to = this._pathTo;
+                            _from = this._pathFrom;
+                            this._pathTo = _from;
+                            this._pathFrom = _to;
                         }
 
                         this.emit('pingpong');
@@ -764,10 +1106,10 @@ var Tween = function (_PIXI$utils$EventEmit) {
                             this._from = _to;
 
                             if (this.path) {
-                                _to = this.pathTo;
-                                _from = this.pathFrom;
-                                this.pathTo = _from;
-                                this.pathFrom = _to;
+                                _to = this._pathTo;
+                                _from = this._pathFrom;
+                                this._pathTo = _from;
+                                this._pathFrom = _to;
                             }
 
                             this._pingPong = false;
@@ -784,17 +1126,18 @@ var Tween = function (_PIXI$utils$EventEmit) {
         }
 
         /**
-         * The current elapsed progress time in ms for the tween.
-         * Defaults to 1 rather than 0, as a hack around a bug of starting a tween with 0 time, and nothing happens
+         * Called when the tween has finished
          *
-         * @member {number}
+         * @fires PIXI.tween.Tween#end
+         *
+         * @private
          */
 
     }, {
         key: '_end',
         value: function _end() {
-            this.isEnded = true;
-            this.active = false;
+            this._isEnded = true;
+            this._active = false;
             this.emit('end');
             this.elapsedTime = 0;
 
@@ -811,10 +1154,17 @@ var Tween = function (_PIXI$utils$EventEmit) {
                 resolvePromise();
             }
         }
+
+        /**
+         * Parses the from and to data to extract details about how the tween should progress
+         *
+         * @private
+         */
+
     }, {
         key: '_parseData',
         value: function _parseData() {
-            if (this.isStarted) {
+            if (this._isStarted) {
                 return;
             }
 
@@ -824,23 +1174,31 @@ var Tween = function (_PIXI$utils$EventEmit) {
                 var distance = this.path.totalDistance();
 
                 if (this.pathReverse) {
-                    this.pathFrom = distance;
-                    this.pathTo = 0;
+                    this._pathFrom = distance;
+                    this._pathTo = 0;
                 } else {
-                    this.pathFrom = 0;
-                    this.pathTo = distance;
+                    this._pathFrom = 0;
+                    this._pathTo = distance;
                 }
             }
         }
+
+        /**
+         * Updates the object with the tween settings
+         *
+         * @param {number} time - Time duration for the tween
+         * @private
+         */
+
     }, {
         key: '_apply',
         value: function _apply(time) {
             _recursiveApplyTween(this._to, this._from, this.target, time, this.elapsedTime, this.easing);
 
             if (this.path) {
-                var _time = this.pingPong ? this._time / 2 : this._time;
-                var b = this.pathFrom;
-                var c = this.pathTo - this.pathFrom;
+                var _time = this.pingPong ? this.time / 2 : this.time;
+                var b = this._pathFrom;
+                var c = this._pathTo - this._pathFrom;
                 var d = _time;
                 var t = this.elapsedTime / d;
 
@@ -850,19 +1208,49 @@ var Tween = function (_PIXI$utils$EventEmit) {
                 this.target.position.set(pos.x, pos.y);
             }
         }
+
+        /**
+         * Can this tween be updated (must have a duration, be active and have a target destination)
+         *
+         * @returns {boolean} - True if this tween can be updated
+         * @private
+         */
+
     }, {
         key: '_canUpdate',
         value: function _canUpdate() {
-            return this._time && this.active && this.target;
+            return this._active && this.target;
         }
     }, {
-        key: 'time',
+        key: 'active',
         get: function get$$1() {
-            return this._time;
-        },
-        set: function set$$1(value) {
-            // eslint-disable-line require-jsdoc
-            this._time = value || 1;
+            return this._active;
+        }
+
+        /**
+         * True if the tween has started running
+         *
+         * @member {boolean}
+         * @readonly
+         */
+
+    }, {
+        key: 'isStarted',
+        get: function get$$1() {
+            return this._isStarted;
+        }
+
+        /**
+         * True if a tween has ended running
+         *
+         * @member {boolean}
+         * @readonly
+         */
+
+    }, {
+        key: 'isEnded',
+        get: function get$$1() {
+            return this._isEnded;
         }
     }]);
     return Tween;
@@ -900,15 +1288,31 @@ function _isObject(obj) {
     return Object.prototype.toString.call(obj) === '[object Object]';
 }
 
+/**
+ * Tween manager class, that handles updating child Tweens
+ *
+ * @class
+ * @memberof PIXI.tween
+ */
+
 var TweenManager = function () {
+    /** */
     function TweenManager() {
         classCallCheck(this, TweenManager);
 
+        /** @member {Array.<PIXI.tween.Tweens>} - The array of tweens being manager */
         this.tweens = [];
-        this._tweensToDelete = [];
 
+        this._tweensToDelete = [];
         this._last = 0;
     }
+
+    /**
+     * Updating of the tween manager, which will in turn update any active tweens
+     *
+     * @param {number} [deltaMS] - If not provided, an internal deltaMS will be calculated
+     */
+
 
     createClass(TweenManager, [{
         key: 'update',
@@ -917,13 +1321,11 @@ var TweenManager = function () {
                 deltaMS = this._getDeltaMS();
             }
 
-            var delta = deltaMS / 1000;
-
             for (var i = 0; i < this.tweens.length; ++i) {
                 var tween = this.tweens[i];
 
                 if (tween.active) {
-                    tween.update(delta, deltaMS);
+                    tween.update(deltaMS);
                     if (tween.isEnded && tween.expire) {
                         tween.remove();
                     }
@@ -937,6 +1339,14 @@ var TweenManager = function () {
                 this._tweensToDelete.length = 0;
             }
         }
+
+        /**
+         * Returns an array with all the tweens for the given target.
+         *
+         * @param {any} target - The target object to check for tweens
+         * @returns {Array.<PIXI.tween.Tween>} - Tweens attached to the given target
+         */
+
     }, {
         key: 'getTweensForTarget',
         value: function getTweensForTarget(target) {
@@ -950,22 +1360,53 @@ var TweenManager = function () {
 
             return tweens;
         }
+
+        /**
+         * Returns a new tween instance that is managed by this tween manager.
+         *
+         * @param {any} target - The target object to add a tween to
+         * @returns {PIXI.tween.Tween} - New tween instance
+         */
+
     }, {
         key: 'createTween',
         value: function createTween(target) {
             return new Tween(target, this);
         }
+
+        /**
+         * Normally you want to use .createTween(target) to create a tween, but, you can also create a tween
+         * with new PIXI.Tween(target) and add it in the manager with this method.
+         *
+         * @param {PIXI.tween.Tween} tween - Tween to add
+         */
+
     }, {
         key: 'addTween',
         value: function addTween(tween) {
             tween.manager = this;
             this.tweens.push(tween);
         }
+
+        /**
+         * Removes a tween from being managed by this instance
+         *
+         * @param {PIXI.tween.Tween} tween - Tween to remove
+         */
+
     }, {
         key: 'removeTween',
         value: function removeTween(tween) {
             this._tweensToDelete.push(tween);
         }
+
+        /**
+         * Delets the tween from the array of managed tweens
+         *
+         * @param {PIXI.tween.Tween} tween - Tween to remove
+         * @private
+         */
+
     }, {
         key: '_remove',
         value: function _remove(tween) {
@@ -975,6 +1416,14 @@ var TweenManager = function () {
                 this.tweens.splice(index, 1);
             }
         }
+
+        /**
+         * Returns a new tween instance that is managed by this tween manager.
+         *
+         * @returns {number} - How much time in ms has passed since update was last called
+         * @private
+         */
+
     }, {
         key: '_getDeltaMS',
         value: function _getDeltaMS() {
@@ -992,31 +1441,77 @@ var TweenManager = function () {
     return TweenManager;
 }();
 
+/**
+ * Class that allows drawing a path using PIXI.Graphics, which can then be followed and used as a tween
+ *
+ * @class
+ * @memberof PIXI.tween
+ */
 var TweenPath = function () {
+    /** */
     function TweenPath() {
         classCallCheck(this, TweenPath);
 
-        this._colsed = false;
-        this._tmpPoint = new PIXI.Point();
-        this._tmpPoint2 = new PIXI.Point();
-        this._tmpDistance = [];
-
+        /** @member {PIXI.Polygon} - PIXI object to use as the path */
         this.polygon = new PIXI.Polygon();
         this.polygon.closed = false;
 
+        /** @member {PIXI.GraphicsData} - Current path */
         this.currentPath = null;
+
+        /** @member {Array.<PIXI.GraphicsData>} - Graphics data */
         this.graphicsData = [];
+
+        /**
+         * @member {boolean}
+         * Used to detect if the graphics object has changed.
+         * If this is set to true then the graphics object will be recalculated.
+         */
         this.dirty = true;
+
+        this._closed = false;
+        this._tmpPoint = new PIXI.Point();
+        this._tmpPoint2 = new PIXI.Point();
+        this._tmpDistance = [];
     }
+
+    /**
+     * Set true to close your path
+     *
+     * @member {boolean}
+     */
+
 
     createClass(TweenPath, [{
         key: "moveTo",
+
+
+        /**
+         * Clear the path
+         * Moves the current drawing position to x, y.
+         * @see https://pixijs.github.io/docs/PIXI.Graphics.html#moveTo
+         *
+         * @param {number} x - the X coordinate to move to
+         * @param {number} y - the Y coordinate to move to
+         * @returns {PIXI.tween.TweenPath} - This instance of TweenPath
+         */
         value: function moveTo(x, y) {
             PIXI.Graphics.prototype.moveTo.call(this, x, y);
             this.dirty = true;
 
             return this;
         }
+
+        /**
+         * Draws a line using the current line style from the current drawing position to (x, y);
+         * The current drawing position is then set to (x, y).
+         * @see https://pixijs.github.io/docs/PIXI.Graphics.html#lineTo
+         *
+         * @param {number} x - the X coordinate to draw to
+         * @param {number} y - the Y coordinate to draw to     *
+         * @returns {PIXI.tween.TweenPath} - This instance of TweenPath
+         */
+
     }, {
         key: "lineTo",
         value: function lineTo(x, y) {
@@ -1025,14 +1520,19 @@ var TweenPath = function () {
 
             return this;
         }
-    }, {
-        key: "bezierCurveTo",
-        value: function bezierCurveTo(cpX, cpY, cpX2, cpY2, toX, toY) {
-            PIXI.Graphics.prototype.bezierCurveTo.call(this, cpX, cpY, cpX2, cpY2, toX, toY);
-            this.dirty = true;
 
-            return this;
-        }
+        /**
+         * Calculate the points for a quadratic bezier curve and then draws it.
+         * Based on: https://stackoverflow.com/questions/785097/how-do-i-implement-a-bezier-curve-in-c
+         * @see https://pixijs.github.io/docs/PIXI.Graphics.html#quadraticCurveTo
+         *
+         * @param {number} cpX - Control point x
+         * @param {number} cpY - Control point y
+         * @param {number} toX - Destination point x
+         * @param {number} toY - Destination point y
+         * @returns {PIXI.tween.TweenPath} - This instance of TweenPath
+         */
+
     }, {
         key: "quadraticCurveTo",
         value: function quadraticCurveTo(cpX, cpY, toX, toY) {
@@ -1041,6 +1541,42 @@ var TweenPath = function () {
 
             return this;
         }
+
+        /**
+         * Calculate the points for a bezier curve and then draws it.
+         * @see https://pixijs.github.io/docs/PIXI.Graphics.html#bezierCurveTo
+         *
+         * @param {number} cpX - Control point x
+         * @param {number} cpY - Control point y
+         * @param {number} cpX2 - Second Control point x
+         * @param {number} cpY2 - Second Control point y
+         * @param {number} toX - Destination point x
+         * @param {number} toY - Destination point y     *
+         * @returns {PIXI.tween.TweenPath} - This instance of TweenPath
+         */
+
+    }, {
+        key: "bezierCurveTo",
+        value: function bezierCurveTo(cpX, cpY, cpX2, cpY2, toX, toY) {
+            PIXI.Graphics.prototype.bezierCurveTo.call(this, cpX, cpY, cpX2, cpY2, toX, toY);
+            this.dirty = true;
+
+            return this;
+        }
+
+        /**
+         * The arcTo() method creates an arc/curve between two tangents on the canvas.
+         * "borrowed" from https://code.google.com/p/fxcanvas/ - thanks google!
+         * @see https://pixijs.github.io/docs/PIXI.Graphics.html#arcTo
+         *
+         * @param {number} x1 - The x-coordinate of the beginning of the arc
+         * @param {number} y1 - The y-coordinate of the beginning of the arc
+         * @param {number} x2 - The x-coordinate of the end of the arc
+         * @param {number} y2 - The y-coordinate of the end of the arc
+         * @param {number} radius - The radius of the arc
+         * @returns {PIXI.tween.TweenPath} - This instance of TweenPath
+         */
+
     }, {
         key: "arcTo",
         value: function arcTo(x1, y1, x2, y2, radius) {
@@ -1049,6 +1585,23 @@ var TweenPath = function () {
 
             return this;
         }
+
+        /**
+         * The arc method creates an arc/curve (used to create circles, or parts of circles).
+         * @see https://pixijs.github.io/docs/PIXI.Graphics.html#arc
+         *
+         * @param {number} cx - The x-coordinate of the center of the circle
+         * @param {number} cy - The y-coordinate of the center of the circle
+         * @param {number} radius - The radius of the circle
+         * @param {number} startAngle - The starting angle, in radians (0 is at the 3 o'clock position
+         *  of the arc's circle)
+         * @param {number} endAngle - The ending angle, in radians
+         * @param {boolean} [anticlockwise=false] - Specifies whether the drawing should be
+         *  counter-clockwise or clockwise. False is default, and indicates clockwise, while true
+         *  indicates counter-clockwise.
+         * @returns {PIXI.tween.TweenPath} - This instance of TweenPath
+         */
+
     }, {
         key: "arc",
         value: function arc(cx, cy, radius, startAngle, endAngle, anticlockwise) {
@@ -1057,6 +1610,14 @@ var TweenPath = function () {
 
             return this;
         }
+
+        /**
+         * Draws the given shape to this TweenPath object. Can be any of Circle, Rectangle, Ellipse, Line or Polygon.
+         *
+         * @param {PIXI.Circle|PIXI.Ellipse|PIXI.Polygon|PIXI.Rectangle|PIXI.RoundedRectangle} shape - The shape object to draw.
+         * @returns {PIXI.tween.TweenPath} - This instance of TweenPath
+         */
+
     }, {
         key: "drawShape",
         value: function drawShape(shape) {
@@ -1065,6 +1626,57 @@ var TweenPath = function () {
 
             return this;
         }
+
+        /**
+         * Clear the path
+         *
+         * @returns {PIXI.tween.TweenPath} - This instance of TweenPath
+         */
+
+    }, {
+        key: "clear",
+        value: function clear() {
+            this.graphicsData.length = 0;
+            this.currentPath = null;
+            this.polygon.points.length = 0;
+            this._closed = false;
+            this.dirty = false;
+
+            return this;
+        }
+
+        /**
+         * Parse the list of points from the path
+         *
+         * @returns {PIXI.tween.TweenPath} - This instance of TweenPath
+         */
+
+    }, {
+        key: "parsePoints",
+        value: function parsePoints() {
+            if (!this.dirty) {
+                return this;
+            }
+            this.dirty = false;
+            this.polygon.points.length = 0;
+            for (var i = 0; i < this.graphicsData.length; ++i) {
+                var shape = this.graphicsData[i].shape;
+
+                if (shape && shape.points) {
+                    this.polygon.points = this.polygon.points.concat(shape.points);
+                }
+            }
+
+            return this;
+        }
+
+        /**
+         * Finds the nth point along the path
+         *
+         * @param {PIXI.Point} num - Point
+         * @returns {PIXI.Point} - Point co-ordinates
+         */
+
     }, {
         key: "getPoint",
         value: function getPoint(num) {
@@ -1075,24 +1687,77 @@ var TweenPath = function () {
 
             return this._tmpPoint;
         }
+
+        /**
+         * Finds the nth point along the path
+         *
+         * @param {PIXI.Point} num - Point
+         * @returns {PIXI.Point} - Point co-ordinates
+         */
+
+    }, {
+        key: "getPointAt",
+        value: function getPointAt(num) {
+            this.parsePoints();
+            if (num > this.length) {
+                return this.getPoint(this.length - 1);
+            }
+
+            if (num % 1 === 0) {
+                return this.getPoint(num);
+            }
+            this._tmpPoint2.set(0, 0);
+            var diff = num % 1;
+
+            var _getPoint = this.getPoint(Math.ceil(num)),
+                ceilX = _getPoint.x,
+                ceilY = _getPoint.y;
+
+            var _getPoint2 = this.getPoint(Math.floor(num)),
+                floorX = _getPoint2.x,
+                floorY = _getPoint2.y;
+
+            var xx = -((floorX - ceilX) * diff);
+            var yy = -((floorY - ceilY) * diff);
+
+            this._tmpPoint2.set(floorX + xx, floorY + yy);
+
+            return this._tmpPoint2;
+        }
+
+        /**
+         * Finds the distance between two points
+         *
+         * @param {PIXI.Point} num1 - First point
+         * @param {PIXI.Point} num2 - Second point
+         * @returns {number} - Distance in pixels
+         */
+
     }, {
         key: "distanceBetween",
         value: function distanceBetween(num1, num2) {
             this.parsePoints();
 
-            var _getPoint = this.getPoint(num1),
-                p1X = _getPoint.x,
-                p1Y = _getPoint.y;
+            var _getPoint3 = this.getPoint(num1),
+                p1X = _getPoint3.x,
+                p1Y = _getPoint3.y;
 
-            var _getPoint2 = this.getPoint(num2),
-                p2X = _getPoint2.x,
-                p2Y = _getPoint2.y;
+            var _getPoint4 = this.getPoint(num2),
+                p2X = _getPoint4.x,
+                p2Y = _getPoint4.y;
 
             var dx = p2X - p1X;
             var dy = p2Y - p1Y;
 
             return Math.sqrt(dx * dx + dy * dy);
         }
+
+        /**
+         * Calculates the total distance along the entire path
+         *
+         * @returns {number} - Distance in pixels
+         */
+
     }, {
         key: "totalDistance",
         value: function totalDistance() {
@@ -1110,35 +1775,14 @@ var TweenPath = function () {
 
             return distance;
         }
-    }, {
-        key: "getPointAt",
-        value: function getPointAt(num) {
-            this.parsePoints();
-            if (num > this.length) {
-                return this.getPoint(this.length - 1);
-            }
 
-            if (num % 1 === 0) {
-                return this.getPoint(num);
-            }
-            this._tmpPoint2.set(0, 0);
-            var diff = num % 1;
+        /**
+         * Finds the nearest point for the distance to be travelled
+         *
+         * @param {number} distance - how far to travel
+         * @returns {PIXI.tween.TweenPath} - This instance of TweenPath
+         */
 
-            var _getPoint3 = this.getPoint(Math.ceil(num)),
-                ceilX = _getPoint3.x,
-                ceilY = _getPoint3.y;
-
-            var _getPoint4 = this.getPoint(Math.floor(num)),
-                floorX = _getPoint4.x,
-                floorY = _getPoint4.y;
-
-            var xx = -((floorX - ceilX) * diff);
-            var yy = -((floorY - ceilY) * diff);
-
-            this._tmpPoint2.set(floorX + xx, floorY + yy);
-
-            return this._tmpPoint2;
-        }
     }, {
         key: "getPointAtDistance",
         value: function getPointAtDistance(distance) {
@@ -1175,38 +1819,12 @@ var TweenPath = function () {
             return this.getPointAt(n + diff1 / diff2);
         }
     }, {
-        key: "parsePoints",
-        value: function parsePoints() {
-            if (!this.dirty) return this;
-            this.dirty = false;
-            this.polygon.points.length = 0;
-            for (var i = 0; i < this.graphicsData.length; ++i) {
-                var shape = this.graphicsData[i].shape;
-
-                if (shape && shape.points) {
-                    this.polygon.points = this.polygon.points.concat(shape.points);
-                }
-            }
-
-            return this;
-        }
-    }, {
-        key: "clear",
-        value: function clear() {
-            this.graphicsData.length = 0;
-            this.currentPath = null;
-            this.polygon.points.length = 0;
-            this._closed = false;
-            this.dirty = false;
-
-            return this;
-        }
-    }, {
         key: "closed",
         get: function get$$1() {
             return this._closed;
         },
         set: function set$$1(value) {
+            // eslint-disable-line require-jsdoc
             if (this._closed === value) {
                 return;
             }
@@ -1214,6 +1832,14 @@ var TweenPath = function () {
             this._closed = value;
             this.dirty = true;
         }
+
+        /**
+         * The number of points along the path
+         *
+         * @member {number}
+         * @readonly
+         */
+
     }, {
         key: "length",
         get: function get$$1() {

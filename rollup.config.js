@@ -43,7 +43,7 @@ export default {
     input,
     output: {
         file,
-        format
+        format,
     },
     sourcemap: true,
     name: `__pixiTween`,
