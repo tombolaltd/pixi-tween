@@ -2,8 +2,7 @@
 !.gitkeep
 *__temp
 node_modules
-docs
-d
+
 # project files
 .project
 
