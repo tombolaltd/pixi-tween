@@ -1,6 +1,6 @@
 /*!
- * pixi-tween - v0.5.0
- * Compiled Wed, 13 Sep 2017 08:36:27 UTC
+ * pixi-tween - v1.0.0
+ * Compiled Wed, 13 Sep 2017 08:53:59 UTC
  *
  * pixi-tween is licensed under the MIT License.
  * http://www.opensource.org/licenses/mit-license
@@ -567,11 +567,11 @@ var Tween = function (_PIXI$utils$EventEmit) {
         }
 
         /**
-        * Set the end data for the tween
-        *
-        * @param {Object} data - Object containing end point data for the tween
-        * @returns {PIXI.tween.Tween}
-        */
+         * Set the end data for the tween
+         *
+         * @param {Object} data - Object containing end point data for the tween
+         * @returns {PIXI.tween.Tween}
+         */
 
     }, {
         key: 'to',

@@ -100,7 +100,7 @@ export default class Tween extends PIXI.utils.EventEmitter {
         return this;
     }
 
-     /**
+    /**
      * Set the end data for the tween
      *
      * @param {Object} data - Object containing end point data for the tween
