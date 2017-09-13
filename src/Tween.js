@@ -201,10 +201,9 @@ export default class Tween extends PIXI.utils.EventEmitter {
      * Set the start point data for the tween.
      * If nothing is set, data is reset so that starting the tween will use the objects current state as the start point
      *
-     * @param {delta} [data={}]- Scalar time value from last update to this update.
      * @param {number} deltaMS - Time elapsed in milliseconds from last update to this update.
      */
-    update(delta, deltaMS) {
+    update(deltaMS) {
         if (!this._canUpdate() && (this._to || this.path)) {
             return;
         }

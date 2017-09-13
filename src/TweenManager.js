@@ -13,13 +13,11 @@ export default class TweenManager {
             deltaMS = this._getDeltaMS();
         }
 
-        const delta = deltaMS / 1000;
-
         for (let i = 0; i < this.tweens.length; ++i) {
             const tween = this.tweens[i];
 
             if (tween.active) {
-                tween.update(delta, deltaMS);
+                tween.update(deltaMS);
                 if (tween.isEnded && tween.expire) {
                     tween.remove();
                 }

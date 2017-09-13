@@ -19,13 +19,13 @@
         "default": {
             "outputSourceFiles": true
         },
-        "applicationName": "pixi-json",
+        "applicationName": "pixi-tween",
         "footer": "",
-        "copyright": "pixi-json Copyright © 2017 Dave Moore.",
+        "copyright": "pixi-tween Copyright © 2017 Dave Moore.",
         "meta": {
-            "title": "pixi-json Documentation",
-            "description": "API Documentation for pixi-json",
-            "keyword": "pixi, pixijs, webgl, json"
+            "title": "pixi-tween Documentation",
+            "description": "API Documentation for pixi-tween",
+            "keyword": "pixi, pixijs, webgl, tween"
         },
         "linenums": true
     },
