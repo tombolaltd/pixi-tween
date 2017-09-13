@@ -1,6 +1,6 @@
 /*!
  * pixi-tween - v1.0.0
- * Compiled Wed, 13 Sep 2017 14:15:33 UTC
+ * Compiled Wed, 13 Sep 2017 15:48:36 UTC
  *
  * pixi-tween is licensed under the MIT License.
  * http://www.opensource.org/licenses/mit-license
@@ -771,6 +771,8 @@ var Tween = function (_PIXI$utils$EventEmit) {
 
     /**
      * Clears all class data, meaning that the tween will now do nothing if start is called
+     *
+     * @returns {PIXI.tween.Tween} - This tween instance
      */
 
 
@@ -801,10 +803,7 @@ var Tween = function (_PIXI$utils$EventEmit) {
             /** @member {boolean} - Set true to reverse the direction along the path */
             this.pathReverse = false;
 
-            /** @member {number} - How much time has passed on an active tween */
-            this.elapsedTime = 0;
-
-            /** @member {number} - The current elapsed progress time in ms for the tween */
+            /** @member {number} - How long to animate this tween over */
             this.time = 0;
 
             this._active = false;
@@ -814,6 +813,7 @@ var Tween = function (_PIXI$utils$EventEmit) {
             this._to = {};
             this._from = {};
             this._delayTime = 0;
+            this._elapsedTime = 0;
             this._repeat = 0;
             this._pingPong = false;
 
@@ -822,6 +822,8 @@ var Tween = function (_PIXI$utils$EventEmit) {
 
             this._chainTween = null;
             this._resolvePromise = null;
+
+            return this;
         }
 
         /**
@@ -1002,7 +1004,7 @@ var Tween = function (_PIXI$utils$EventEmit) {
     }, {
         key: 'reset',
         value: function reset() {
-            this.elapsedTime = 0;
+            this._elapsedTime = 0;
             this._repeat = 0;
             this._delayTime = 0;
             this._isStarted = false;
@@ -1056,14 +1058,14 @@ var Tween = function (_PIXI$utils$EventEmit) {
             var _to = void 0;
             var _from = void 0;
 
-            if (time >= this.elapsedTime) {
-                var t = this.elapsedTime + deltaMS;
+            if (time >= this._elapsedTime) {
+                var t = this._elapsedTime + deltaMS;
                 var ended = t >= time;
 
-                this.elapsedTime = ended ? time : t;
+                this._elapsedTime = ended ? time : t;
                 this._apply(time);
 
-                var realElapsed = this._pingPong ? time + this.elapsedTime : this.elapsedTime;
+                var realElapsed = this._pingPong ? time + this._elapsedTime : this._elapsedTime;
 
                 this.emit('update', realElapsed);
 
@@ -1083,7 +1085,7 @@ var Tween = function (_PIXI$utils$EventEmit) {
                         }
 
                         this.emit('pingpong');
-                        this.elapsedTime = 0;
+                        this._elapsedTime = 0;
 
                         return;
                     }
@@ -1091,7 +1093,7 @@ var Tween = function (_PIXI$utils$EventEmit) {
                     if (this.loop || this.repeat > this._repeat) {
                         ++this._repeat;
                         this.emit('repeat', this._repeat);
-                        this.elapsedTime = 0;
+                        this._elapsedTime = 0;
 
                         if (this.pingPong && this._pingPong) {
                             _to = this._to;
@@ -1133,7 +1135,7 @@ var Tween = function (_PIXI$utils$EventEmit) {
             this._isEnded = true;
             this._active = false;
             this.emit('end');
-            this.elapsedTime = 0;
+            this._elapsedTime = 0;
 
             if (this._chainTween) {
                 if (!this._chainTween.manager) {
@@ -1187,14 +1189,14 @@ var Tween = function (_PIXI$utils$EventEmit) {
     }, {
         key: '_apply',
         value: function _apply(time) {
-            _recursiveApplyTween(this._to, this._from, this.target, time, this.elapsedTime, this.easing);
+            _recursiveApplyTween(this._to, this._from, this.target, time, this._elapsedTime, this.easing);
 
             if (this.path) {
                 var _time = this.pingPong ? this.time / 2 : this.time;
                 var b = this._pathFrom;
                 var c = this._pathTo - this._pathFrom;
                 var d = _time;
-                var t = _time ? this.elapsedTime / d : 1;
+                var t = _time ? this._elapsedTime / d : 1;
 
                 var distance = b + c * this.easing(t);
                 var pos = this.path.getPointAtDistance(distance);
@@ -1219,6 +1221,19 @@ var Tween = function (_PIXI$utils$EventEmit) {
         key: 'active',
         get: function get$$1() {
             return this._active;
+        }
+
+        /**
+         * How much time has passed on an active tween
+         *
+         * @member {number}
+         * @readonly
+         */
+
+    }, {
+        key: 'elapsedTime',
+        get: function get$$1() {
+            return this._elapsedTime;
         }
 
         /**
@@ -1294,7 +1309,7 @@ var TweenManager = function () {
     function TweenManager() {
         classCallCheck(this, TweenManager);
 
-        /** @member {Array.<PIXI.tween.Tweens>} - The array of tweens being manager */
+        /** @member {Array.<PIXI.tween.Tween>} - The array of tweens being manager */
         this.tweens = [];
 
         this._tweensToDelete = [];
@@ -1774,7 +1789,7 @@ var TweenPath = function () {
          * Finds the nearest point for the distance to be travelled
          *
          * @param {number} distance - how far to travel
-         * @returns {PIXI.tween.TweenPath} - This instance of TweenPath
+         * @returns {PIXI.Point} - Point co-ordinates
          */
 
     }, {

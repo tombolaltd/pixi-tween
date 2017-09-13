@@ -303,7 +303,7 @@ export default class TweenPath {
      * Finds the nearest point for the distance to be travelled
      *
      * @param {number} distance - how far to travel
-     * @returns {PIXI.tween.TweenPath} - This instance of TweenPath
+     * @returns {PIXI.Point} - Point co-ordinates
      */
     getPointAtDistance(distance) {
         this.parsePoints();

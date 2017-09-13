@@ -9,7 +9,7 @@ import Tween from './Tween';
 export default class TweenManager {
     /** */
     constructor() {
-        /** @member {Array.<PIXI.tween.Tweens>} - The array of tweens being manager */
+        /** @member {Array.<PIXI.tween.Tween>} - The array of tweens being manager */
         this.tweens = [];
 
         this._tweensToDelete = [];

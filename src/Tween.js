@@ -61,6 +61,8 @@ export default class Tween extends PIXI.utils.EventEmitter {
 
     /**
      * Clears all class data, meaning that the tween will now do nothing if start is called
+     *
+     * @returns {PIXI.tween.Tween} - This tween instance
      */
     clear() {
         /** @member {PIXI.tween.Easing} - Either an easing function from PIXI.tween.Easing or a custom easing */
@@ -87,10 +89,7 @@ export default class Tween extends PIXI.utils.EventEmitter {
         /** @member {boolean} - Set true to reverse the direction along the path */
         this.pathReverse = false;
 
-        /** @member {number} - How much time has passed on an active tween */
-        this.elapsedTime = 0;
-
-        /** @member {number} - The current elapsed progress time in ms for the tween */
+        /** @member {number} - How long to animate this tween over */
         this.time = 0;
 
         this._active = false;
@@ -100,6 +99,7 @@ export default class Tween extends PIXI.utils.EventEmitter {
         this._to = {};
         this._from = {};
         this._delayTime = 0;
+        this._elapsedTime = 0;
         this._repeat = 0;
         this._pingPong = false;
 
@@ -108,6 +108,8 @@ export default class Tween extends PIXI.utils.EventEmitter {
 
         this._chainTween = null;
         this._resolvePromise = null;
+
+        return this;
     }
 
     /**
@@ -118,6 +120,16 @@ export default class Tween extends PIXI.utils.EventEmitter {
      */
     get active() {
         return this._active;
+    }
+
+    /**
+     * How much time has passed on an active tween
+     *
+     * @member {number}
+     * @readonly
+     */
+    get elapsedTime() {
+        return this._elapsedTime;
     }
 
     /**
@@ -275,7 +287,7 @@ export default class Tween extends PIXI.utils.EventEmitter {
      * @returns {PIXI.tween.Tween} - This tween instance
      */
     reset() {
-        this.elapsedTime = 0;
+        this._elapsedTime = 0;
         this._repeat = 0;
         this._delayTime = 0;
         this._isStarted = false;
@@ -326,14 +338,14 @@ export default class Tween extends PIXI.utils.EventEmitter {
         let _to;
         let _from;
 
-        if (time >= this.elapsedTime) {
-            const t = this.elapsedTime + deltaMS;
+        if (time >= this._elapsedTime) {
+            const t = this._elapsedTime + deltaMS;
             const ended = (t >= time);
 
-            this.elapsedTime = ended ? time : t;
+            this._elapsedTime = ended ? time : t;
             this._apply(time);
 
-            const realElapsed = this._pingPong ? time + this.elapsedTime : this.elapsedTime;
+            const realElapsed = this._pingPong ? time + this._elapsedTime : this._elapsedTime;
 
             this.emit('update', realElapsed);
 
@@ -353,7 +365,7 @@ export default class Tween extends PIXI.utils.EventEmitter {
                     }
 
                     this.emit('pingpong');
-                    this.elapsedTime = 0;
+                    this._elapsedTime = 0;
 
                     return;
                 }
@@ -361,7 +373,7 @@ export default class Tween extends PIXI.utils.EventEmitter {
                 if (this.loop || this.repeat > this._repeat) {
                     ++this._repeat;
                     this.emit('repeat', this._repeat);
-                    this.elapsedTime = 0;
+                    this._elapsedTime = 0;
 
                     if (this.pingPong && this._pingPong) {
                         _to = this._to;
@@ -400,7 +412,7 @@ export default class Tween extends PIXI.utils.EventEmitter {
         this._isEnded = true;
         this._active = false;
         this.emit('end');
-        this.elapsedTime = 0;
+        this._elapsedTime = 0;
 
         if (this._chainTween) {
             if (!this._chainTween.manager) {
@@ -448,14 +460,14 @@ export default class Tween extends PIXI.utils.EventEmitter {
      * @private
      */
     _apply(time) {
-        _recursiveApplyTween(this._to, this._from, this.target, time, this.elapsedTime, this.easing);
+        _recursiveApplyTween(this._to, this._from, this.target, time, this._elapsedTime, this.easing);
 
         if (this.path) {
             const time = (this.pingPong) ? this.time / 2 : this.time;
             const b = this._pathFrom;
             const c = this._pathTo - this._pathFrom;
             const d = time;
-            const t = time ? this.elapsedTime / d : 1;
+            const t = time ? this._elapsedTime / d : 1;
 
             const distance = b + (c * this.easing(t));
             const pos = this.path.getPointAtDistance(distance);
