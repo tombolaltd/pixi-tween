@@ -1,4 +1,31 @@
+# project ignores
+!.gitkeep
+*__temp
 node_modules
-npm-debug.log
-.DS_STORE
+docs
+d
+# project files
+.project
+
+# vim swap files
+*.sw*
+
+# emacs temp files
+*~
+\#*#
+
+# jetBrains IDE ignores
 .idea
+
+# visual studio code IDE ignores
+.vscode
+
+# sublime text files
+*.sublime*
+*.*~*.TMP
+
+# temp files
+.DS_Store
+Thumbs.db
+Desktop.ini
+npm-debug.log

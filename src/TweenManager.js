@@ -13,10 +13,11 @@ export default class TweenManager {
             deltaMS = this._getDeltaMS();
         }
 
-        let delta = deltaMS/1000;
+        const delta = deltaMS / 1000;
 
         for (let i = 0; i < this.tweens.length; ++i) {
-            let tween = this.tweens[i];
+            const tween = this.tweens[i];
+
             if (tween.active) {
                 tween.update(delta, deltaMS);
                 if (tween.isEnded && tween.expire) {
@@ -34,7 +35,8 @@ export default class TweenManager {
     }
 
     getTweensForTarget(target) {
-        let tweens = [];
+        const tweens = [];
+
         for (let i = 0; i < this.tweens.length; ++i) {
             if (this.tweens[i].target === target) {
                 tweens.push(this.tweens[i]);
@@ -58,7 +60,8 @@ export default class TweenManager {
     }
 
     _remove(tween) {
-        let index = this.tweens.indexOf(tween);
+        const index = this.tweens.indexOf(tween);
+
         if (index !== -1) {
             this.tweens.splice(index, 1);
         }
@@ -68,8 +71,9 @@ export default class TweenManager {
         if (this._last === 0) {
             this._last = Date.now();
         }
-        let now = Date.now();
-        let deltaMS = now - this._last;
+        const now = Date.now();
+        const deltaMS = now - this._last;
+
         this._last = now;
 
         return deltaMS;
