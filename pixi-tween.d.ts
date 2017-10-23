@@ -1,16 +1,38 @@
 // Type definitions for pixi-tween
 // Project: https://github.com/themoonrat/pixi-tween
 
+interface on {
+    end?: Function;
+    pingpong?: Function;
+    repeat?: Function;
+    start?: Function;
+    stop?: Function;
+    update?: Function;
+}
+
 declare namespace PIXI {
     class Graphics {
         drawPath(path: PIXI.tween.TweenPath): PIXI.Graphics;
     }
 
-    tweenManager: PIXI.tween.TweenManager;
-
     namespace tween {
+        interface tweenConfig {
+            from?: object;
+            to?: object;
+            delay?: number;
+            easing?: Function;
+            expire?: boolean;
+            loop?: boolean;
+            path?: object;
+            pathReverse?: boolean;
+            pingPong?: boolean;
+            repeat?: number;
+            time?: number;
+            on?: on;
+        }
+
         class Tween {
-            constructor(target: object, manager: PIXI.tween.TweenManager);
+            constructor(target: object, manager?: PIXI.tween.TweenManager, config?: PIXI.tween.tweenConfig);
             readonly active: boolean;
             delay: number;
             easing: PIXI.tween.Easing;
@@ -27,6 +49,7 @@ declare namespace PIXI {
             addTo(manager: PIXI.tween.TweenManager): PIXI.tween.Tween;
             chain(tween: PIXI.tween.Tween): PIXI.tween.Tween;
             clear(): PIXI.tween.Tween;
+            config(config: PIXI.tween.tweenConfig);
             from(data?: object): PIXI.tween.Tween;
             remove(): PIXI.tween.Tween;
             reset(): PIXI.tween.Tween;
@@ -77,9 +100,9 @@ declare namespace PIXI {
         class TweenManager {
             constructor();
             tweens: Array<PIXI.tween.Tween>;
-            addTween(tween: PIXI.tween.Tween);
-            createTween(target: object): PIXI.tween.Tween;
-            getTweensForTarget(target: object): Array<PIXI.tweenTween>;
+            addTween(tween: PIXI.tween.Tween, config?: PIXI.tween.tweenConfig);
+            createTween(target: object, conifg: PIXI.tween.tweenConfig): PIXI.tween.Tween;
+            getTweensForTarget(target: object): Array<PIXI.tween.Tween>;
             removeTween(tween: PIXI.tween.Tween);
             update(deltaMS: number);
         }
@@ -107,7 +130,9 @@ declare namespace PIXI {
             quadraticCurveTo(cpX: number, cpY: number, toX: number, toY: number): PIXI.tween.TweenPath;
             totalDistance(): number;
         }
-    }
+
+		tweenManager: PIXI.tween.TweenManager;
+	}
 }
 
 declare module "pixi-tween" {
