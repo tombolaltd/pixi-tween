@@ -67,10 +67,11 @@ export default class TweenManager {
      * Returns a new tween instance that is managed by this tween manager.
      *
      * @param {any} target - The target object to add a tween to
+     * @param {PIXI.tween.Tween#tweenConfig} [config] - object to configure the tween
      * @returns {PIXI.tween.Tween} - New tween instance
      */
-    createTween(target) {
-        return new Tween(target, this);
+    createTween(target, config) {
+        return new Tween(target, this, config);
     }
 
     /**

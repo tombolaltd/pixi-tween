@@ -40,6 +40,30 @@ import Easing from './Easing';
  */
 
 /**
+ * Quickly configure a tween via an object / json
+ *
+ * @typedef {Object} PIXI.tween.Tween#tweenConfig
+ * @property {Object} [from]
+ * @property {Object} [to]
+ * @property {number} [delay]
+ * @property {function} [easing]
+ * @property {boolean} [expire]
+ * @property {boolean} [loop]
+ * @property {Object} [path]
+ * @property {boolean} [pathReverse]
+ * @property {boolean} [pingPong]
+ * @property {number} [repeat]
+ * @property {number} [time]
+ * @property {Object} [on]
+ * @property {function} [on.end]
+ * @property {function} [on.pingpong]
+ * @property {function} [on.repeat]
+ * @property {function} [on.start]
+ * @property {function} [on.stop]
+ * @property {function} [on.update]
+ */
+
+/**
  * Tween class
  *
  * @class
@@ -49,14 +73,20 @@ export default class Tween extends PIXI.utils.EventEmitter {
     /**
      * @param {*} target - Target object to tween
      * @param {PIXI.tween.TweenManager} [manager] - Tween manager to handle this tween
+     * @param {PIXI.tween.Tween#tweenConfig} [config] - object to configure the tween
      */
-    constructor(target, manager) {
+    constructor(target, manager, config) {
         super();
+
         this.target = target;
         if (manager) {
             this.addTo(manager);
         }
+
         this.clear();
+        if (config) {
+            this.config(config);
+        }
     }
 
     /**
@@ -108,6 +138,75 @@ export default class Tween extends PIXI.utils.EventEmitter {
 
         this._chainTween = null;
         this._resolvePromise = null;
+
+        return this;
+    }
+
+    /**
+     * Configures the tween via a config object
+     *
+     * @param {PIXI.tween.Tween#tweenConfig} config - object to configure the tween
+     * @returns {PIXI.tween.Tween} - This tween instance
+     */
+    config(config) {
+        if (!config || typeof config !== 'object') {
+            return this;
+        }
+
+        if (config.from && typeof config.from === 'object') {
+            this.from(config.from);
+        }
+        if (config.to && typeof config.to === 'object') {
+            this.to(config.to);
+        }
+        if (typeof config.delay === 'number') {
+            this.delay = config.delay;
+        }
+        if (typeof config.easing === 'function') {
+            this.easing = config.easing;
+        }
+        if (typeof config.expire === 'boolean') {
+            this.expire = config.expire;
+        }
+        if (typeof config.loop === 'boolean') {
+            this.loop = config.loop;
+        }
+        if (typeof config.path === 'object') {
+            this.path = config.path;
+        }
+        if (typeof config.pathReverse === 'boolean') {
+            this.pathReverse = config.pathReverse;
+        }
+        if (typeof config.pingPong === 'boolean') {
+            this.pingPong = config.pingPong;
+        }
+        if (typeof config.repeat === 'number') {
+            this.repeat = config.repeat;
+        }
+        if (typeof config.time === 'number') {
+            this.time = config.time;
+        }
+
+        if (config.on && typeof config.on === 'object') {
+            if (typeof config.on.end === 'function') {
+                this.on('end', config.on.end);
+            }
+            if (typeof config.on.pingpong === 'function') {
+                this.on('pingpong', config.on.pingpong);
+            }
+            if (typeof config.on.repeat === 'function') {
+                this.on('repeat', config.on.repeat);
+            }
+            if (typeof config.on.start === 'function') {
+                this.on('start', config.on.start);
+            }
+            if (typeof config.on.stop === 'function') {
+                this.on('stop', config.on.stop);
+            }
+            if (typeof config.on.update === 'function') {
+                this.on('update', config.on.update);
+            }
+        }
 
         return this;
     }
@@ -239,7 +338,7 @@ export default class Tween extends PIXI.utils.EventEmitter {
      * Set the end data for the tween
      *
      * @example
-     * tween.to { x:100, y:100 }
+     * tween.to({ x:100, y:100 });
      *
      * @param {Object} data - Object containing end point data for the tween
      * @returns {PIXI.tween.Tween} - This tween instance
@@ -255,7 +354,7 @@ export default class Tween extends PIXI.utils.EventEmitter {
      * If nothing is set, data is reset so that starting the tween will use the objects current state as the start point
      *
      * @example
-     * tween.from { x:50, y:50 }
+     * tween.from({ x:50, y:50 });
      *
      * @param {Object} [data={}] - Object containing start point data for the tween
      * @returns {PIXI.tween.Tween} - This tween instance

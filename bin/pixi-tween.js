@@ -1,6 +1,6 @@
 /*!
- * pixi-tween - v0.5.0
- * Compiled Wed, 13 Sep 2017 16:57:32 UTC
+ * pixi-tween - v0.6.0
+ * Compiled Mon, 23 Oct 2017 14:26:46 UTC
  *
  * pixi-tween is licensed under the MIT License.
  * http://www.opensource.org/licenses/mit-license
@@ -526,6 +526,16 @@ var Easing = {
     }
 };
 
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) {
+  return typeof obj;
+} : function (obj) {
+  return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
+};
+
+
+
+
+
 var asyncGenerator = function () {
   function AwaitValue(value) {
     this.value = value;
@@ -749,6 +759,30 @@ var possibleConstructorReturn = function (self, call) {
  */
 
 /**
+ * Quickly configure a tween via an object / json
+ *
+ * @typedef {Object} PIXI.tween.Tween#tweenConfig
+ * @property {Object} [from]
+ * @property {Object} [to]
+ * @property {number} [delay]
+ * @property {function} [easing]
+ * @property {boolean} [expire]
+ * @property {boolean} [loop]
+ * @property {Object} [path]
+ * @property {boolean} [pathReverse]
+ * @property {boolean} [pingPong]
+ * @property {number} [repeat]
+ * @property {number} [time]
+ * @property {Object} [on]
+ * @property {function} [on.end]
+ * @property {function} [on.pingpong]
+ * @property {function} [on.repeat]
+ * @property {function} [on.start]
+ * @property {function} [on.stop]
+ * @property {function} [on.update]
+ */
+
+/**
  * Tween class
  *
  * @class
@@ -761,8 +795,9 @@ var Tween = function (_PIXI$utils$EventEmit) {
     /**
      * @param {*} target - Target object to tween
      * @param {PIXI.tween.TweenManager} [manager] - Tween manager to handle this tween
+     * @param {PIXI.tween.Tween#tweenConfig} [config] - object to configure the tween
      */
-    function Tween(target, manager) {
+    function Tween(target, manager, config) {
         classCallCheck(this, Tween);
 
         var _this = possibleConstructorReturn(this, (Tween.__proto__ || Object.getPrototypeOf(Tween)).call(this));
@@ -771,7 +806,11 @@ var Tween = function (_PIXI$utils$EventEmit) {
         if (manager) {
             _this.addTo(manager);
         }
+
         _this.clear();
+        if (config) {
+            _this.config(config);
+        }
         return _this;
     }
 
@@ -828,6 +867,78 @@ var Tween = function (_PIXI$utils$EventEmit) {
 
             this._chainTween = null;
             this._resolvePromise = null;
+
+            return this;
+        }
+
+        /**
+         * Configures the tween via a config object
+         *
+         * @param {PIXI.tween.Tween#tweenConfig} config - object to configure the tween
+         * @returns {PIXI.tween.Tween} - This tween instance
+         */
+
+    }, {
+        key: 'config',
+        value: function config(_config) {
+            if (!_config || (typeof _config === 'undefined' ? 'undefined' : _typeof(_config)) !== 'object') {
+                return this;
+            }
+
+            if (_config.from && _typeof(_config.from) === 'object') {
+                this.from(_config.from);
+            }
+            if (_config.to && _typeof(_config.to) === 'object') {
+                this.to(_config.to);
+            }
+            if (typeof _config.delay === 'number') {
+                this.delay = _config.delay;
+            }
+            if (typeof _config.easing === 'function') {
+                this.easing = _config.easing;
+            }
+            if (typeof _config.expire === 'boolean') {
+                this.expire = _config.expire;
+            }
+            if (typeof _config.loop === 'boolean') {
+                this.loop = _config.loop;
+            }
+            if (_typeof(_config.path) === 'object') {
+                this.path = _config.path;
+            }
+            if (typeof _config.pathReverse === 'boolean') {
+                this.pathReverse = _config.pathReverse;
+            }
+            if (typeof _config.pingPong === 'boolean') {
+                this.pingPong = _config.pingPong;
+            }
+            if (typeof _config.repeat === 'number') {
+                this.repeat = _config.repeat;
+            }
+            if (typeof _config.time === 'number') {
+                this.time = _config.time;
+            }
+
+            if (_config.on && _typeof(_config.on) === 'object') {
+                if (typeof _config.on.end === 'function') {
+                    this.on('end', _config.on.end);
+                }
+                if (typeof _config.on.pingpong === 'function') {
+                    this.on('pingpong', _config.on.pingpong);
+                }
+                if (typeof _config.on.repeat === 'function') {
+                    this.on('repeat', _config.on.repeat);
+                }
+                if (typeof _config.on.start === 'function') {
+                    this.on('start', _config.on.start);
+                }
+                if (typeof _config.on.stop === 'function') {
+                    this.on('stop', _config.on.stop);
+                }
+                if (typeof _config.on.update === 'function') {
+                    this.on('update', _config.on.update);
+                }
+            }
 
             return this;
         }
@@ -946,7 +1057,7 @@ var Tween = function (_PIXI$utils$EventEmit) {
          * Set the end data for the tween
          *
          * @example
-         * tween.to { x:100, y:100 }
+         * tween.to({ x:100, y:100 });
          *
          * @param {Object} data - Object containing end point data for the tween
          * @returns {PIXI.tween.Tween} - This tween instance
@@ -967,7 +1078,7 @@ var Tween = function (_PIXI$utils$EventEmit) {
          * If nothing is set, data is reset so that starting the tween will use the objects current state as the start point
          *
          * @example
-         * tween.from { x:50, y:50 }
+         * tween.from({ x:50, y:50 });
          *
          * @param {Object} [data={}] - Object containing start point data for the tween
          * @returns {PIXI.tween.Tween} - This tween instance
@@ -1380,13 +1491,14 @@ var TweenManager = function () {
          * Returns a new tween instance that is managed by this tween manager.
          *
          * @param {any} target - The target object to add a tween to
+         * @param {PIXI.tween.Tween#tweenConfig} [config] - object to configure the tween
          * @returns {PIXI.tween.Tween} - New tween instance
          */
 
     }, {
         key: 'createTween',
-        value: function createTween(target) {
-            return new Tween(target, this);
+        value: function createTween(target, config) {
+            return new Tween(target, this, config);
         }
 
         /**
