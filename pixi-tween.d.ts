@@ -100,8 +100,8 @@ declare namespace PIXI {
         class TweenManager {
             constructor();
             tweens: Array<PIXI.tween.Tween>;
-            addTween(tween: PIXI.tween.Tween, config?: PIXI.tween.tweenConfig);
-            createTween(target: object, conifg: PIXI.tween.tweenConfig): PIXI.tween.Tween;
+            addTween(tween: PIXI.tween.Tween);
+            createTween(target: object, config?: PIXI.tween.tweenConfig): PIXI.tween.Tween;
             getTweensForTarget(target: object): Array<PIXI.tween.Tween>;
             removeTween(tween: PIXI.tween.Tween);
             update(deltaMS: number);
