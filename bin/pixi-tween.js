@@ -1,6 +1,6 @@
 /*!
- * pixi-tween - v0.6.0
- * Compiled Mon, 23 Oct 2017 14:26:46 UTC
+ * pixi-tween - v0.6.1
+ * Compiled Tue, 24 Oct 2017 09:40:07 UTC
  *
  * pixi-tween is licensed under the MIT License.
  * http://www.opensource.org/licenses/mit-license
@@ -857,6 +857,7 @@ var Tween = function (_PIXI$utils$EventEmit) {
 
             this._to = {};
             this._from = {};
+            this._resetFromOnStart = false;
             this._delayTime = 0;
             this._elapsedTime = 0;
             this._repeat = 0;
@@ -885,7 +886,7 @@ var Tween = function (_PIXI$utils$EventEmit) {
                 return this;
             }
 
-            if (_config.from && _typeof(_config.from) === 'object') {
+            if (_typeof(_config.from) === 'object') {
                 this.from(_config.from);
             }
             if (_config.to && _typeof(_config.to) === 'object') {
@@ -998,6 +999,10 @@ var Tween = function (_PIXI$utils$EventEmit) {
             this._active = true;
             this._isStarted = false;
 
+            if (this._resetFromOnStart) {
+                this._from = {};
+            }
+
             if (!this._resolvePromise && resolve) {
                 this._resolvePromise = resolve;
             }
@@ -1080,16 +1085,20 @@ var Tween = function (_PIXI$utils$EventEmit) {
          * @example
          * tween.from({ x:50, y:50 });
          *
-         * @param {Object} [data={}] - Object containing start point data for the tween
+         * @param {Object} [data] - Object containing start point data for the tween
          * @returns {PIXI.tween.Tween} - This tween instance
          */
 
     }, {
         key: 'from',
-        value: function from() {
-            var data = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-
-            this._from = data;
+        value: function from(data) {
+            if (!data || (typeof data === 'undefined' ? 'undefined' : _typeof(data)) !== 'object') {
+                this._resetFromOnStart = true;
+                this._from = {};
+            } else {
+                this._resetFromOnStart = false;
+                this._from = data;
+            }
 
             return this;
         }

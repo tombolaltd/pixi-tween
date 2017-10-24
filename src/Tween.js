@@ -128,6 +128,7 @@ export default class Tween extends PIXI.utils.EventEmitter {
 
         this._to = {};
         this._from = {};
+        this._resetFromOnStart = false;
         this._delayTime = 0;
         this._elapsedTime = 0;
         this._repeat = 0;
@@ -153,7 +154,7 @@ export default class Tween extends PIXI.utils.EventEmitter {
             return this;
         }
 
-        if (config.from && typeof config.from === 'object') {
+        if (typeof config.from === 'object') {
             this.from(config.from);
         }
         if (config.to && typeof config.to === 'object') {
@@ -289,6 +290,10 @@ export default class Tween extends PIXI.utils.EventEmitter {
         this._active = true;
         this._isStarted = false;
 
+        if (this._resetFromOnStart) {
+            this._from = {};
+        }
+
         if (!this._resolvePromise && resolve) {
             this._resolvePromise = resolve;
         }
@@ -356,11 +361,17 @@ export default class Tween extends PIXI.utils.EventEmitter {
      * @example
      * tween.from({ x:50, y:50 });
      *
-     * @param {Object} [data={}] - Object containing start point data for the tween
+     * @param {Object} [data] - Object containing start point data for the tween
      * @returns {PIXI.tween.Tween} - This tween instance
      */
-    from(data = {}) {
-        this._from = data;
+    from(data) {
+        if (!data || typeof data !== 'object') {
+            this._resetFromOnStart = true;
+            this._from = {};
+        } else {
+            this._resetFromOnStart = false;
+            this._from = data;
+        }
 
         return this;
     }
