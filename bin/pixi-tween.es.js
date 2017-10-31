@@ -1,6 +1,6 @@
 /*!
- * pixi-tween - v0.6.1
- * Compiled Tue, 24 Oct 2017 09:40:13 UTC
+ * pixi-tween - v0.6.2
+ * Compiled Tue, 31 Oct 2017 15:00:57 UTC
  *
  * pixi-tween is licensed under the MIT License.
  * http://www.opensource.org/licenses/mit-license
@@ -889,8 +889,12 @@ var Tween = function (_PIXI$utils$EventEmit) {
             if (typeof _config.delay === 'number') {
                 this.delay = _config.delay;
             }
-            if (typeof _config.easing === 'function') {
-                this.easing = _config.easing;
+            if (_config.easing) {
+                if (typeof _config.easing === 'string' && Easing[_config.easing]) {
+                    this.easing = Easing[_config.easing]();
+                } else if (typeof _config.easing === 'function') {
+                    this.easing = _config.easing;
+                }
             }
             if (typeof _config.expire === 'boolean') {
                 this.expire = _config.expire;

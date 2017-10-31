@@ -163,9 +163,11 @@ export default class Tween extends PIXI.utils.EventEmitter {
         if (typeof config.delay === 'number') {
             this.delay = config.delay;
         }
-        if (typeof config.easing === 'function') {
-            if (Easing[config.easing]) {
+        if (config.easing) {
+            if (typeof config.easing === 'string' && Easing[config.easing]) {
                 this.easing = Easing[config.easing]();
+            } else if (typeof config.easing === 'function') {
+                this.easing = config.easing;
             }
         }
         if (typeof config.expire === 'boolean') {
