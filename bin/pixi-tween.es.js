@@ -1,6 +1,6 @@
 /*!
- * pixi-tween - v0.6.2
- * Compiled Tue, 31 Oct 2017 15:00:57 UTC
+ * pixi-tween - v0.6.3
+ * Compiled Tue, 02 Jan 2018 13:02:40 UTC
  *
  * pixi-tween is licensed under the MIT License.
  * http://www.opensource.org/licenses/mit-license
@@ -1459,9 +1459,10 @@ var TweenManager = function () {
 
                 if (tween.active) {
                     tween.update(deltaMS);
-                    if (tween.isEnded && tween.expire) {
-                        tween.remove();
-                    }
+                }
+
+                if (tween.isEnded && tween.expire) {
+                    tween.remove();
                 }
             }
 

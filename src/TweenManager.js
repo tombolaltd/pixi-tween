@@ -31,9 +31,10 @@ export default class TweenManager {
 
             if (tween.active) {
                 tween.update(deltaMS);
-                if (tween.isEnded && tween.expire) {
-                    tween.remove();
-                }
+            }
+
+            if (tween.isEnded && tween.expire) {
+                tween.remove();
             }
         }
 
