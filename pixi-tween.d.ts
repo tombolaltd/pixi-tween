@@ -29,6 +29,7 @@ declare namespace PIXI {
             repeat?: number;
             time?: number;
             on?: on;
+            speed?: number; 
         }
 
         class Tween {
@@ -46,6 +47,8 @@ declare namespace PIXI {
             pingPong: boolean;
             repeat: number;
             time: number;
+            progress: number;
+            speed: number;
             addTo(manager: PIXI.tween.TweenManager): PIXI.tween.Tween;
             chain(tween: PIXI.tween.Tween): PIXI.tween.Tween;
             clear(): PIXI.tween.Tween;
