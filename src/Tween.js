@@ -454,7 +454,7 @@ export default class Tween extends PIXI.utils.EventEmitter {
         if (!this._canUpdate() && (this._to || this.path)) {
             return;
         }
-        
+
         deltaMS *= this.speed;
 
         if (this.delay > this._delayTime) {
@@ -482,6 +482,7 @@ export default class Tween extends PIXI.utils.EventEmitter {
             this._apply(time);
 
             const realElapsed = this._pingPong ? time + this._elapsedTime : this._elapsedTime;
+
             this._progress = realElapsed / this.time;
 
             this.emit('update', this._progress, realElapsed);

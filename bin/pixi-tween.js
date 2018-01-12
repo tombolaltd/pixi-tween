@@ -1,6 +1,6 @@
 /*!
- * pixi-tween - v0.6.3
- * Compiled Tue, 02 Jan 2018 13:02:34 UTC
+ * pixi-tween - v0.7.0
+ * Compiled Fri, 12 Jan 2018 13:19:52 UTC
  *
  * pixi-tween is licensed under the MIT License.
  * http://www.opensource.org/licenses/mit-license
@@ -743,7 +743,8 @@ var possibleConstructorReturn = function (self, call) {
  * Fired at each frame
  *
  * @event PIXI.tween.Tween#update
- * @param {number} elapsedTime - Time in ms since last update event was emitted
+ * @param {number} progress - 0-1 decimal value representing proportion of completion.
+ * @param {number} elapsedTime - How much time in ms that has passed since the tween started.
  */
 
 /**
@@ -773,6 +774,7 @@ var possibleConstructorReturn = function (self, call) {
  * @property {boolean} [pingPong]
  * @property {number} [repeat]
  * @property {number} [time]
+ * @property {number} [speed]
  * @property {Object} [on]
  * @property {function} [on.end]
  * @property {function} [on.pingpong]
@@ -851,6 +853,9 @@ var Tween = function (_PIXI$utils$EventEmit) {
             /** @member {number} - How long to animate this tween over */
             this.time = 0;
 
+            /** @member {number} - The speed that the tween will play at. 0 effectively pauses it, 1 is normal speed */
+            this.speed = 1;
+
             this._active = false;
             this._isStarted = false;
             this._isEnded = false;
@@ -860,6 +865,7 @@ var Tween = function (_PIXI$utils$EventEmit) {
             this._resetFromOnStart = false;
             this._delayTime = 0;
             this._elapsedTime = 0;
+            this._progress = 0;
             this._repeat = 0;
             this._pingPong = false;
 
@@ -922,6 +928,9 @@ var Tween = function (_PIXI$utils$EventEmit) {
             }
             if (typeof _config.time === 'number') {
                 this.time = _config.time;
+            }
+            if (typeof _config.speed === 'number') {
+                this.speed = _config.speed;
             }
 
             if (_config.on && _typeof(_config.on) === 'object') {
@@ -1135,6 +1144,7 @@ var Tween = function (_PIXI$utils$EventEmit) {
         key: 'reset',
         value: function reset() {
             this._elapsedTime = 0;
+            this._progress = 0;
             this._repeat = 0;
             this._delayTime = 0;
             this._isStarted = false;
@@ -1171,6 +1181,8 @@ var Tween = function (_PIXI$utils$EventEmit) {
                 return;
             }
 
+            deltaMS *= this.speed;
+
             if (this.delay > this._delayTime) {
                 this._delayTime += deltaMS;
 
@@ -1197,7 +1209,9 @@ var Tween = function (_PIXI$utils$EventEmit) {
 
                 var realElapsed = this._pingPong ? time + this._elapsedTime : this._elapsedTime;
 
-                this.emit('update', realElapsed);
+                this._progress = realElapsed / this.time;
+
+                this.emit('update', this._progress, realElapsed);
 
                 if (ended) {
                     if (this.pingPong && !this._pingPong) {
@@ -1216,6 +1230,7 @@ var Tween = function (_PIXI$utils$EventEmit) {
 
                         this.emit('pingpong');
                         this._elapsedTime = 0;
+                        this._progress = 0.5;
 
                         return;
                     }
@@ -1224,6 +1239,7 @@ var Tween = function (_PIXI$utils$EventEmit) {
                         ++this._repeat;
                         this.emit('repeat', this._repeat);
                         this._elapsedTime = 0;
+                        this._progress = 0;
 
                         if (this.pingPong && this._pingPong) {
                             _to = this._to;
@@ -1265,7 +1281,6 @@ var Tween = function (_PIXI$utils$EventEmit) {
             this._isEnded = true;
             this._active = false;
             this.emit('end');
-            this._elapsedTime = 0;
 
             if (this._chainTween) {
                 if (!this._chainTween.manager) {
@@ -1364,6 +1379,19 @@ var Tween = function (_PIXI$utils$EventEmit) {
         key: 'elapsedTime',
         get: function get$$1() {
             return this._elapsedTime;
+        }
+
+        /**
+         * 0-1 decimal value representing proportion of completion
+         *
+         * @member {number}
+         * @readonly
+         */
+
+    }, {
+        key: 'progress',
+        get: function get$$1() {
+            return this._progress;
         }
 
         /**
