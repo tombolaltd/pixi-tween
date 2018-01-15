@@ -534,6 +534,7 @@ export default class Tween extends PIXI.utils.EventEmitter {
                     return;
                 }
 
+                this._progress = 1;
                 this._end();
             }
 
@@ -552,6 +553,7 @@ export default class Tween extends PIXI.utils.EventEmitter {
         this._isEnded = true;
         this._active = false;
         this.emit('end');
+        this._elapsedTime = 0;
 
         if (this._chainTween) {
             if (!this._chainTween.manager) {
