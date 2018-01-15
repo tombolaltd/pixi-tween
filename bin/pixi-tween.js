@@ -1,6 +1,6 @@
 /*!
  * pixi-tween - v0.7.0
- * Compiled Mon, 15 Jan 2018 15:17:26 UTC
+ * Compiled Mon, 15 Jan 2018 15:18:55 UTC
  *
  * pixi-tween is licensed under the MIT License.
  * http://www.opensource.org/licenses/mit-license
@@ -1211,7 +1211,7 @@ var Tween = function (_PIXI$utils$EventEmit) {
 
                 this._progress = realElapsed / this.time;
 
-                this.emit('update', this._progress, realElapsed);
+                this.emit('update', Math.min(this._progress, 1), realElapsed);
 
                 if (ended) {
                     if (this.pingPong && !this._pingPong) {
@@ -1260,7 +1260,6 @@ var Tween = function (_PIXI$utils$EventEmit) {
                         return;
                     }
 
-                    this._progress = 1;
                     this._end();
                 }
 
