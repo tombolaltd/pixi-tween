@@ -1,6 +1,6 @@
 /*!
  * pixi-tween - v0.7.0
- * Compiled Fri, 12 Jan 2018 13:19:57 UTC
+ * Compiled Mon, 15 Jan 2018 15:17:33 UTC
  *
  * pixi-tween is licensed under the MIT License.
  * http://www.opensource.org/licenses/mit-license
@@ -1254,6 +1254,7 @@ var Tween = function (_PIXI$utils$EventEmit) {
                         return;
                     }
 
+                    this._progress = 1;
                     this._end();
                 }
 
@@ -1275,6 +1276,7 @@ var Tween = function (_PIXI$utils$EventEmit) {
             this._isEnded = true;
             this._active = false;
             this.emit('end');
+            this._elapsedTime = 0;
 
             if (this._chainTween) {
                 if (!this._chainTween.manager) {
