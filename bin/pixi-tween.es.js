@@ -1,16 +1,10 @@
 /*!
  * pixi-tween - v0.7.0
- * Compiled Mon, 15 Jan 2018 15:20:54 UTC
+ * Compiled Mon, 15 Jan 2018 15:21:01 UTC
  *
  * pixi-tween is licensed under the MIT License.
  * http://www.opensource.org/licenses/mit-license
  */
-
-(function (global, factory) {
-	typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
-	typeof define === 'function' && define.amd ? define(factory) :
-	(global.__pixiTween = factory());
-}(this, (function () { 'use strict';
 
 if (typeof PIXI === 'undefined') { throw 'PixiJS is required'; }
 
@@ -2043,7 +2037,5 @@ if (!PIXI.tweenManager) {
     PIXI.tween = tween;
 }
 
-return tween;
-
-})));
-//# sourceMappingURL=pixi-tween.js.map
+export default tween;
+//# sourceMappingURL=pixi-tween.es.js.map
