@@ -1,6 +1,6 @@
 /*!
- * pixi-tween - v0.7.0
- * Compiled Mon, 15 Jan 2018 15:21:01 UTC
+ * pixi-tween - v0.7.1
+ * Compiled Fri, 16 Feb 2018 10:50:40 UTC
  *
  * pixi-tween is licensed under the MIT License.
  * http://www.opensource.org/licenses/mit-license
@@ -1548,8 +1548,10 @@ var TweenManager = function () {
     }, {
         key: 'addTween',
         value: function addTween(tween) {
-            tween.manager = this;
-            this.tweens.push(tween);
+            if (tween) {
+                tween.manager = this;
+                this.tweens.push(tween);
+            }
         }
 
         /**
@@ -1561,7 +1563,9 @@ var TweenManager = function () {
     }, {
         key: 'removeTween',
         value: function removeTween(tween) {
-            this._tweensToDelete.push(tween);
+            if (tween) {
+                this._tweensToDelete.push(tween);
+            }
         }
 
         /**

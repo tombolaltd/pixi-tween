@@ -82,8 +82,10 @@ export default class TweenManager {
      * @param {PIXI.tween.Tween} tween - Tween to add
      */
     addTween(tween) {
-        tween.manager = this;
-        this.tweens.push(tween);
+        if (tween) {
+            tween.manager = this;
+            this.tweens.push(tween);
+        }
     }
 
     /**
@@ -92,7 +94,9 @@ export default class TweenManager {
      * @param {PIXI.tween.Tween} tween - Tween to remove
      */
     removeTween(tween) {
-        this._tweensToDelete.push(tween);
+        if (tween) {
+            this._tweensToDelete.push(tween);
+        }
     }
 
     /**
