@@ -5,26 +5,26 @@ import Easing from './Easing';
 
 // extend pixi graphics to draw tweenPaths
 PIXI.Graphics.prototype.drawPath = function drawPath(path) {
-    path.parsePoints();
-    this.drawShape(path.polygon);
+	path.parsePoints();
+	this.drawShape(path.polygon);
 
-    return this;
+	return this;
 };
 
 /**
  * @namespace PIXI.tween
  */
 const tween = {
-    TweenManager,
-    Tween,
-    Easing,
-    TweenPath,
+	TweenManager,
+	Tween,
+	Easing,
+	TweenPath,
 };
 
 if (!PIXI.tweenManager) {
-    PIXI.tweenManager = new TweenManager();
+	PIXI.tweenManager = new TweenManager();
 
-    PIXI.tween = tween;
+	PIXI.tween = tween;
 }
 
 export default tween;

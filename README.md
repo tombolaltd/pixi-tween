@@ -1,7 +1,7 @@
 pixi-tween
 ======================
 
-pixi-tween is a plugin for Pixi.js v4.1.0 or higher to create tween animations.
+pixi-tween is a plugin for PixiJS v5.0.0 or higher to create tween animations.
 
 ## API documentation
 [JSDocs](https://themoonrat.github.io/pixi-tween/docs/index.html)
@@ -42,7 +42,7 @@ This plugin add a new namespace names `tween` to the PIXI namespace, and this ne
 A tweenManager is automatically created for you in PIXI.tweenManager, which you need to update on ticks via `PIXI.tweenManager.update()`.
 You can create your own tweenManagers via `new PIXI.tween.TweenManager`, and you can also manually update the timings of a manager via `PIXI.tweenManager.update(deltaMS)`
 
-When a tween is ended, the instance will kept in the memory and in the tweenManager, but you can prevent this if you set .expire = true in the tween.
+When a tween is ended, the instance will kept be automatically removed from the tweenManager. Keep a reference to it yourself it you want to re-use; it will re-add itself if required.
 
 ### Events
 Tween extends from [PIXI.utils.EventEmitter](https://github.com/primus/eventemitter3), and emit some events: start, end, repeat, update, stop and pingpong. You can read about these in the api documentation under PIXI.tween.Tween.

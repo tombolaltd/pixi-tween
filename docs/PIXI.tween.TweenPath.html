@@ -169,8 +169,6 @@
             
                 <li data-name="PIXI.tween.Tween#elapsedTime"><a href="PIXI.tween.Tween.html#elapsedTime">elapsedTime</a></li>
             
-                <li data-name="PIXI.tween.Tween#expire"><a href="PIXI.tween.Tween.html#expire">expire</a></li>
-            
                 <li data-name="PIXI.tween.Tween#isEnded"><a href="PIXI.tween.Tween.html#isEnded">isEnded</a></li>
             
                 <li data-name="PIXI.tween.Tween#isStarted"><a href="PIXI.tween.Tween.html#isStarted">isStarted</a></li>
@@ -205,8 +203,6 @@
             <ul class="methods itemMembers">
             
             <span class="subtitle">Methods</span>
-            
-                <li data-name="PIXI.tween.Tween#addTo"><a href="PIXI.tween.Tween.html#addTo">addTo</a></li>
             
                 <li data-name="PIXI.tween.Tween#chain"><a href="PIXI.tween.Tween.html#chain">chain</a></li>
             
@@ -259,6 +255,8 @@
             
             <span class="subtitle">Members</span>
             
+                <li data-name="PIXI.tween.TweenManager#_tweensToRemove"><a href="PIXI.tween.TweenManager.html#_tweensToRemove">_tweensToRemove</a></li>
+            
                 <li data-name="PIXI.tween.TweenManager#tweens"><a href="PIXI.tween.TweenManager.html#tweens">tweens</a></li>
             
             </ul>
@@ -297,13 +295,7 @@
             
             <span class="subtitle">Members</span>
             
-                <li data-name="PIXI.tween.TweenPath#closed"><a href="PIXI.tween.TweenPath.html#closed">closed</a></li>
-            
-                <li data-name="PIXI.tween.TweenPath#currentPath"><a href="PIXI.tween.TweenPath.html#currentPath">currentPath</a></li>
-            
                 <li data-name="PIXI.tween.TweenPath#dirty"><a href="PIXI.tween.TweenPath.html#dirty">dirty</a></li>
-            
-                <li data-name="PIXI.tween.TweenPath#graphicsData"><a href="PIXI.tween.TweenPath.html#graphicsData">graphicsData</a></li>
             
                 <li data-name="PIXI.tween.TweenPath#length"><a href="PIXI.tween.TweenPath.html#length">length</a></li>
             
@@ -330,7 +322,19 @@
             
                 <li data-name="PIXI.tween.TweenPath#distanceBetween"><a href="PIXI.tween.TweenPath.html#distanceBetween">distanceBetween</a></li>
             
+                <li data-name="PIXI.tween.TweenPath#drawCircle"><a href="PIXI.tween.TweenPath.html#drawCircle">drawCircle</a></li>
+            
+                <li data-name="PIXI.tween.TweenPath#drawEllipse"><a href="PIXI.tween.TweenPath.html#drawEllipse">drawEllipse</a></li>
+            
+                <li data-name="PIXI.tween.TweenPath#drawPolygon"><a href="PIXI.tween.TweenPath.html#drawPolygon">drawPolygon</a></li>
+            
+                <li data-name="PIXI.tween.TweenPath#drawRect"><a href="PIXI.tween.TweenPath.html#drawRect">drawRect</a></li>
+            
+                <li data-name="PIXI.tween.TweenPath#drawRoundedRect"><a href="PIXI.tween.TweenPath.html#drawRoundedRect">drawRoundedRect</a></li>
+            
                 <li data-name="PIXI.tween.TweenPath#drawShape"><a href="PIXI.tween.TweenPath.html#drawShape">drawShape</a></li>
+            
+                <li data-name="PIXI.tween.TweenPath#drawStar"><a href="PIXI.tween.TweenPath.html#drawStar">drawStar</a></li>
             
                 <li data-name="PIXI.tween.TweenPath#getPoint"><a href="PIXI.tween.TweenPath.html#getPoint">getPoint</a></li>
             
@@ -366,7 +370,7 @@
     
 <header>
     <h2>
-        <span class="ancestors"><a href="PIXI.tween.html">.tween</a>.</span>
+        <span class="ancestors"><a href="PIXI.tween.html">.tween</a>~</span>
     
     TweenPath
     </h2>
@@ -385,12 +389,12 @@
     <div class="nameContainer">
         <h4 class="name" id="TweenPath">
             
-            new PIXI.tween.TweenPath<span class="signature">()</span>
+            new TweenPath<span class="signature">()</span>
         </h4>
     
         
         <div class="tag-source">
-            <a href="TweenPath.js.html">TweenPath.js</a>, <a href="TweenPath.js.html#line9">line 9</a>
+            <a href="TweenPath.js.html">TweenPath.js</a>, <a href="TweenPath.js.html#line13">line 13</a>
         </div>
         
     </div>
@@ -466,96 +470,6 @@
             
 <dt>
     <div class="nameContainer">
-        <h4 class="name" id="closed">closed<span class="type-signature type boolean">boolean</span> </h4>
-    </div>
-    
-    
-</dt>
-<dd>
-    
-    <div class="description">
-        <p>Set true to close your path</p>
-    </div>
-    
-    
-    
-<dl class="details">
-    
-        
-    
-    
-    
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-</dl>
-
-    
-    
-</dd>
-
-        
-            
-<dt>
-    <div class="nameContainer">
-        <h4 class="name" id="currentPath">currentPath<span class="type-signature type pixi.graphicsdata">PIXI.GraphicsData</span> </h4>
-    </div>
-    
-    
-</dt>
-<dd>
-    
-    <div class="description">
-        <p>Current path</p>
-    </div>
-    
-    
-    
-<dl class="details">
-    
-        
-    
-    
-    
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-</dl>
-
-    
-    
-</dd>
-
-        
-            
-<dt>
-    <div class="nameContainer">
         <h4 class="name" id="dirty">dirty<span class="type-signature type boolean">boolean</span> </h4>
     </div>
     
@@ -564,52 +478,8 @@
 <dd>
     
     <div class="description">
-        <p>Used to detect if the graphics object has changed.<br>If this is set to true then the graphics object will be recalculated.</p>
-    </div>
-    
-    
-    
-<dl class="details">
-    
-        
-    
-    
-    
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-</dl>
-
-    
-    
-</dd>
-
-        
-            
-<dt>
-    <div class="nameContainer">
-        <h4 class="name" id="graphicsData">graphicsData<span class="type-signature type array.<pixi.graphicsdata>">Array.&lt;PIXI.GraphicsData></span> </h4>
-    </div>
-    
-    
-</dt>
-<dd>
-    
-    <div class="description">
-        <p>Graphics data</p>
+        <p>Used to detect if the graphics object has changed.<br>
+If this is set to true then the graphics object will be recalculated.</p>
     </div>
     
     
@@ -749,7 +619,7 @@
     
         
         <div class="tag-source">
-            <a href="TweenPath.js.html">TweenPath.js</a>, <a href="TweenPath.js.html#line166">line 166</a>
+            <a href="TweenPath.js.html">TweenPath.js</a>, <a href="TweenPath.js.html#line223">line 223</a>
         </div>
         
     </div>
@@ -914,7 +784,8 @@
                         
                     
                 
-                <p>The starting angle, in radians (0 is at the 3 o'clock position<br> of the arc's circle)</p></td>
+                <p>The starting angle, in radians (0 is at the 3 o'clock position<br>
+of the arc's circle)</p></td>
         </tr>
 	
 	
@@ -982,7 +853,9 @@
                         
                     
                 
-                <p>Specifies whether the drawing should be<br> counter-clockwise or clockwise. False is default, and indicates clockwise, while true<br> indicates counter-clockwise.</p></td>
+                <p>Specifies whether the drawing should be<br>
+counter-clockwise or clockwise. False is default, and indicates clockwise, while true<br>
+indicates counter-clockwise.</p></td>
         </tr>
 	
 	
@@ -1010,13 +883,6 @@
     
     
     
-    
-    <dt class="tag-see">See:</dt>
-    <dd class="tag-see">
-        <ul>
-            <li><a target="_blank" href="https://pixijs.github.io/docs/PIXI.Graphics.html#arc">https://pixijs.github.io/docs/PIXI.Graphics.html#arc</a></li>
-        </ul>
-    </dd>
     
     
     
@@ -1078,7 +944,7 @@
     
         
         <div class="tag-source">
-            <a href="TweenPath.js.html">TweenPath.js</a>, <a href="TweenPath.js.html#line144">line 144</a>
+            <a href="TweenPath.js.html">TweenPath.js</a>, <a href="TweenPath.js.html#line242">line 242</a>
         </div>
         
     </div>
@@ -1089,7 +955,8 @@
     
     
     <div class="description">
-        <p>The arcTo() method creates an arc/curve between two tangents on the canvas.<br>&quot;borrowed&quot; from https://code.google.com/p/fxcanvas/ - thanks google!</p>
+        <p>The arcTo() method creates an arc/curve between two tangents on the canvas.</p>
+<p>&quot;borrowed&quot; from https://code.google.com/p/fxcanvas/ - thanks google!</p>
     </div>
     
 
@@ -1257,13 +1124,6 @@
     
     
     
-    <dt class="tag-see">See:</dt>
-    <dd class="tag-see">
-        <ul>
-            <li><a target="_blank" href="https://pixijs.github.io/docs/PIXI.Graphics.html#arcTo">https://pixijs.github.io/docs/PIXI.Graphics.html#arcTo</a></li>
-        </ul>
-    </dd>
-    
     
     
 </dl>
@@ -1324,7 +1184,7 @@
     
         
         <div class="tag-source">
-            <a href="TweenPath.js.html">TweenPath.js</a>, <a href="TweenPath.js.html#line125">line 125</a>
+            <a href="TweenPath.js.html">TweenPath.js</a>, <a href="TweenPath.js.html#line260">line 260</a>
         </div>
         
     </div>
@@ -1497,7 +1357,7 @@
             
             <td class="description last">
                 
-                <p>Destination point y     *</p></td>
+                <p>Destination point y</p></td>
         </tr>
 	
 	
@@ -1525,13 +1385,6 @@
     
     
     
-    
-    <dt class="tag-see">See:</dt>
-    <dd class="tag-see">
-        <ul>
-            <li><a target="_blank" href="https://pixijs.github.io/docs/PIXI.Graphics.html#bezierCurveTo">https://pixijs.github.io/docs/PIXI.Graphics.html#bezierCurveTo</a></li>
-        </ul>
-    </dd>
     
     
     
@@ -1593,7 +1446,7 @@
     
         
         <div class="tag-source">
-            <a href="TweenPath.js.html">TweenPath.js</a>, <a href="TweenPath.js.html#line191">line 191</a>
+            <a href="TweenPath.js.html">TweenPath.js</a>, <a href="TweenPath.js.html#line53">line 53</a>
         </div>
         
     </div>
@@ -1695,7 +1548,7 @@
     
         
         <div class="tag-source">
-            <a href="TweenPath.js.html">TweenPath.js</a>, <a href="TweenPath.js.html#line273">line 273</a>
+            <a href="TweenPath.js.html">TweenPath.js</a>, <a href="TweenPath.js.html#line70">line 70</a>
         </div>
         
     </div>
@@ -1743,7 +1596,7 @@
             <td class="type">
             
                 
-<span class="param-type">PIXI.Point</span>
+<span class="param-type">number</span>
 
 
             
@@ -1766,7 +1619,7 @@
             <td class="type">
             
                 
-<span class="param-type">PIXI.Point</span>
+<span class="param-type">number</span>
 
 
             
@@ -1858,6 +1711,1023 @@
             
 <dt>
     <div class="nameContainer">
+        <h4 class="name" id="drawCircle">
+            
+            drawCircle<span class="signature">(x, y, radius)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{<a href="PIXI.tween.TweenPath.html">PIXI.tween.TweenPath</a>}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="TweenPath.js.html">TweenPath.js</a>, <a href="TweenPath.js.html#line275">line 275</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Draws a circle.</p>
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>x</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                <p>The X coordinate of the center of the circle</p></td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>y</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                <p>The Y coordinate of the center of the circle</p></td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>radius</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                <p>The radius of the circle</p></td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Type</th>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    
+        <tr>
+            
+            <td class="type">
+            
+                        <a href="PIXI.tween.TweenPath.html">PIXI.tween.TweenPath</a>
+                        
+                    
+            </td>
+            <td class="description last"><ul>
+<li>This instance of TweenPath</li>
+</ul></td>
+        </tr>
+    
+    </tbody>
+</table>
+
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="drawEllipse">
+            
+            drawEllipse<span class="signature">(x, y, width, height)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{<a href="PIXI.tween.TweenPath.html">PIXI.tween.TweenPath</a>}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="TweenPath.js.html">TweenPath.js</a>, <a href="TweenPath.js.html#line291">line 291</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Draws an ellipse.</p>
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>x</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                <p>The X coordinate of the center of the ellipse</p></td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>y</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                <p>The Y coordinate of the center of the ellipse</p></td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>width</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                <p>The half width of the ellipse</p></td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>height</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                <p>The half height of the ellipse</p></td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Type</th>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    
+        <tr>
+            
+            <td class="type">
+            
+                        <a href="PIXI.tween.TweenPath.html">PIXI.tween.TweenPath</a>
+                        
+                    
+            </td>
+            <td class="description last"><ul>
+<li>This instance of TweenPath</li>
+</ul></td>
+        </tr>
+    
+    </tbody>
+</table>
+
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="drawPolygon">
+            
+            drawPolygon<span class="signature">(path)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{<a href="PIXI.tween.TweenPath.html">PIXI.tween.TweenPath</a>}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="TweenPath.js.html">TweenPath.js</a>, <a href="TweenPath.js.html#line337">line 337</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Draws a polygon using the given path.</p>
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>path</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Array.&lt;number></span>
+|
+
+<span class="param-type">Array.&lt;PIXI.Point></span>
+|
+
+<span class="param-type">PIXI.Polygon</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                <p>The path data used to construct the polygon.</p></td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Type</th>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    
+        <tr>
+            
+            <td class="type">
+            
+                        <a href="PIXI.tween.TweenPath.html">PIXI.tween.TweenPath</a>
+                        
+                    
+            </td>
+            <td class="description last"><ul>
+<li>This instance of TweenPath</li>
+</ul></td>
+        </tr>
+    
+    </tbody>
+</table>
+
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="drawRect">
+            
+            drawRect<span class="signature">(x, y, width, height)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{<a href="PIXI.tween.TweenPath.html">PIXI.tween.TweenPath</a>}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="TweenPath.js.html">TweenPath.js</a>, <a href="TweenPath.js.html#line307">line 307</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Draws a rectangle shape.</p>
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>x</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                <p>The X coord of the top-left of the rectangle</p></td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>y</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                <p>The Y coord of the top-left of the rectangle</p></td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>width</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                <p>The width of the rectangle</p></td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>height</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                <p>The height of the rectangle</p></td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Type</th>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    
+        <tr>
+            
+            <td class="type">
+            
+                        <a href="PIXI.tween.TweenPath.html">PIXI.tween.TweenPath</a>
+                        
+                    
+            </td>
+            <td class="description last"><ul>
+<li>This instance of TweenPath</li>
+</ul></td>
+        </tr>
+    
+    </tbody>
+</table>
+
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="drawRoundedRect">
+            
+            drawRoundedRect<span class="signature">(x, y, width, height, radius)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{<a href="PIXI.tween.TweenPath.html">PIXI.tween.TweenPath</a>}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="TweenPath.js.html">TweenPath.js</a>, <a href="TweenPath.js.html#line324">line 324</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Draw a rectangle shape with rounded/beveled corners.</p>
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>x</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                <p>The X coord of the top-left of the rectangle</p></td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>y</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                <p>The Y coord of the top-left of the rectangle</p></td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>width</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                <p>The width of the rectangle</p></td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>height</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                <p>The height of the rectangle</p></td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>radius</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                <p>Radius of the rectangle corners</p></td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Type</th>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    
+        <tr>
+            
+            <td class="type">
+            
+                        <a href="PIXI.tween.TweenPath.html">PIXI.tween.TweenPath</a>
+                        
+                    
+            </td>
+            <td class="description last"><ul>
+<li>This instance of TweenPath</li>
+</ul></td>
+        </tr>
+    
+    </tbody>
+</table>
+
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
         <h4 class="name" id="drawShape">
             
             drawShape<span class="signature">(shape)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{<a href="PIXI.tween.TweenPath.html">PIXI.tween.TweenPath</a>}</span>
@@ -1865,7 +2735,7 @@
     
         
         <div class="tag-source">
-            <a href="TweenPath.js.html">TweenPath.js</a>, <a href="TweenPath.js.html#line179">line 179</a>
+            <a href="TweenPath.js.html">TweenPath.js</a>, <a href="TweenPath.js.html#line350">line 350</a>
         </div>
         
     </div>
@@ -1935,7 +2805,331 @@
             
             <td class="description last">
                 
-                <p>The shape object to draw.</p></td>
+                <p>Shape to draw</p></td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Type</th>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    
+        <tr>
+            
+            <td class="type">
+            
+                        <a href="PIXI.tween.TweenPath.html">PIXI.tween.TweenPath</a>
+                        
+                    
+            </td>
+            <td class="description last"><ul>
+<li>This instance of TweenPath</li>
+</ul></td>
+        </tr>
+    
+    </tbody>
+</table>
+
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="drawStar">
+            
+            drawStar<span class="signature">(x, y, points, radius, <span class="optional">innerRadius</span>, <span class="optional">rotation</span>)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{<a href="PIXI.tween.TweenPath.html">PIXI.tween.TweenPath</a>}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="TweenPath.js.html">TweenPath.js</a>, <a href="TweenPath.js.html#line368">line 368</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Draw a star shape with an arbitrary number of points.</p>
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		<th>Default</th>
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>x</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                    
+                        
+                    
+                
+                <p>Center X position of the star</p></td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>y</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                    
+                        
+                    
+                
+                <p>Center Y position of the star</p></td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>points</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                    
+                        
+                    
+                
+                <p>The number of points of the star, must be &gt; 1</p></td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>radius</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                    
+                        
+                    
+                
+                <p>The outer radius of the star</p></td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>innerRadius</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                <p>The inner radius between points, default half <code>radius</code></p></td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>rotation</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                    0
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                <p>The rotation of the star in radians, where 0 is vertical</p></td>
         </tr>
 	
 	
@@ -2024,7 +3218,7 @@
     
         
         <div class="tag-source">
-            <a href="TweenPath.js.html">TweenPath.js</a>, <a href="TweenPath.js.html#line229">line 229</a>
+            <a href="TweenPath.js.html">TweenPath.js</a>, <a href="TweenPath.js.html#line86">line 86</a>
         </div>
         
     </div>
@@ -2072,7 +3266,7 @@
             <td class="type">
             
                 
-<span class="param-type">PIXI.Point</span>
+<span class="param-type">number</span>
 
 
             
@@ -2171,7 +3365,7 @@
     
         
         <div class="tag-source">
-            <a href="TweenPath.js.html">TweenPath.js</a>, <a href="TweenPath.js.html#line244">line 244</a>
+            <a href="TweenPath.js.html">TweenPath.js</a>, <a href="TweenPath.js.html#line101">line 101</a>
         </div>
         
     </div>
@@ -2219,7 +3413,7 @@
             <td class="type">
             
                 
-<span class="param-type">PIXI.Point</span>
+<span class="param-type">number</span>
 
 
             
@@ -2318,7 +3512,7 @@
     
         
         <div class="tag-source">
-            <a href="TweenPath.js.html">TweenPath.js</a>, <a href="TweenPath.js.html#line310">line 310</a>
+            <a href="TweenPath.js.html">TweenPath.js</a>, <a href="TweenPath.js.html#line129">line 129</a>
         </div>
         
     </div>
@@ -2465,7 +3659,7 @@
     
         
         <div class="tag-source">
-            <a href="TweenPath.js.html">TweenPath.js</a>, <a href="TweenPath.js.html#line88">line 88</a>
+            <a href="TweenPath.js.html">TweenPath.js</a>, <a href="TweenPath.js.html#line383">line 383</a>
         </div>
         
     </div>
@@ -2476,7 +3670,8 @@
     
     
     <div class="description">
-        <p>Draws a line using the current line style from the current drawing position to (x, y);<br>The current drawing position is then set to (x, y).</p>
+        <p>Draws a line using the current line style from the current drawing position to (x, y);<br>
+The current drawing position is then set to (x, y).</p>
     </div>
     
 
@@ -2546,7 +3741,7 @@
             
             <td class="description last">
                 
-                <p>the Y coordinate to draw to     *</p></td>
+                <p>the Y coordinate to draw to</p></td>
         </tr>
 	
 	
@@ -2574,13 +3769,6 @@
     
     
     
-    
-    <dt class="tag-see">See:</dt>
-    <dd class="tag-see">
-        <ul>
-            <li><a target="_blank" href="https://pixijs.github.io/docs/PIXI.Graphics.html#lineTo">https://pixijs.github.io/docs/PIXI.Graphics.html#lineTo</a></li>
-        </ul>
-    </dd>
     
     
     
@@ -2642,7 +3830,7 @@
     
         
         <div class="tag-source">
-            <a href="TweenPath.js.html">TweenPath.js</a>, <a href="TweenPath.js.html#line72">line 72</a>
+            <a href="TweenPath.js.html">TweenPath.js</a>, <a href="TweenPath.js.html#line397">line 397</a>
         </div>
         
     </div>
@@ -2653,7 +3841,7 @@
     
     
     <div class="description">
-        <p>Clear the path<br>Moves the current drawing position to x, y.</p>
+        <p>Moves the current drawing position to x, y.</p>
     </div>
     
 
@@ -2752,13 +3940,6 @@
     
     
     
-    <dt class="tag-see">See:</dt>
-    <dd class="tag-see">
-        <ul>
-            <li><a target="_blank" href="https://pixijs.github.io/docs/PIXI.Graphics.html#moveTo">https://pixijs.github.io/docs/PIXI.Graphics.html#moveTo</a></li>
-        </ul>
-    </dd>
-    
     
     
 </dl>
@@ -2819,7 +4000,7 @@
     
         
         <div class="tag-source">
-            <a href="TweenPath.js.html">TweenPath.js</a>, <a href="TweenPath.js.html#line206">line 206</a>
+            <a href="TweenPath.js.html">TweenPath.js</a>, <a href="TweenPath.js.html#line168">line 168</a>
         </div>
         
     </div>
@@ -2921,7 +4102,7 @@
     
         
         <div class="tag-source">
-            <a href="TweenPath.js.html">TweenPath.js</a>, <a href="TweenPath.js.html#line106">line 106</a>
+            <a href="TweenPath.js.html">TweenPath.js</a>, <a href="TweenPath.js.html#line414">line 414</a>
         </div>
         
     </div>
@@ -2932,7 +4113,8 @@
     
     
     <div class="description">
-        <p>Calculate the points for a quadratic bezier curve and then draws it.<br>Based on: https://stackoverflow.com/questions/785097/how-do-i-implement-a-bezier-curve-in-c</p>
+        <p>Calculate the points for a quadratic bezier curve and then draws it.<br>
+Based on: https://stackoverflow.com/questions/785097/how-do-i-implement-a-bezier-curve-in-c</p>
     </div>
     
 
@@ -3077,13 +4259,6 @@
     
     
     
-    <dt class="tag-see">See:</dt>
-    <dd class="tag-see">
-        <ul>
-            <li><a target="_blank" href="https://pixijs.github.io/docs/PIXI.Graphics.html#quadraticCurveTo">https://pixijs.github.io/docs/PIXI.Graphics.html#quadraticCurveTo</a></li>
-        </ul>
-    </dd>
-    
     
     
 </dl>
@@ -3144,7 +4319,7 @@
     
         
         <div class="tag-source">
-            <a href="TweenPath.js.html">TweenPath.js</a>, <a href="TweenPath.js.html#line288">line 288</a>
+            <a href="TweenPath.js.html">TweenPath.js</a>, <a href="TweenPath.js.html#line193">line 193</a>
         </div>
         
     </div>
@@ -3254,7 +4429,7 @@
         
 
         <footer>
-            Documentation generated by <a target="_blank" href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Fri Feb 16 2018 10:50:28 GMT+0000 (GMT Standard Time)
+            Documentation generated by <a target="_blank" href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.3</a> on Tue Dec 15 2020 12:15:27 GMT+0000 (Greenwich Mean Time)
         </footer>
     </div>
 </div>

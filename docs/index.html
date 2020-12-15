@@ -169,8 +169,6 @@
             
                 <li data-name="PIXI.tween.Tween#elapsedTime"><a href="PIXI.tween.Tween.html#elapsedTime">elapsedTime</a></li>
             
-                <li data-name="PIXI.tween.Tween#expire"><a href="PIXI.tween.Tween.html#expire">expire</a></li>
-            
                 <li data-name="PIXI.tween.Tween#isEnded"><a href="PIXI.tween.Tween.html#isEnded">isEnded</a></li>
             
                 <li data-name="PIXI.tween.Tween#isStarted"><a href="PIXI.tween.Tween.html#isStarted">isStarted</a></li>
@@ -205,8 +203,6 @@
             <ul class="methods itemMembers">
             
             <span class="subtitle">Methods</span>
-            
-                <li data-name="PIXI.tween.Tween#addTo"><a href="PIXI.tween.Tween.html#addTo">addTo</a></li>
             
                 <li data-name="PIXI.tween.Tween#chain"><a href="PIXI.tween.Tween.html#chain">chain</a></li>
             
@@ -259,6 +255,8 @@
             
             <span class="subtitle">Members</span>
             
+                <li data-name="PIXI.tween.TweenManager#_tweensToRemove"><a href="PIXI.tween.TweenManager.html#_tweensToRemove">_tweensToRemove</a></li>
+            
                 <li data-name="PIXI.tween.TweenManager#tweens"><a href="PIXI.tween.TweenManager.html#tweens">tweens</a></li>
             
             </ul>
@@ -297,13 +295,7 @@
             
             <span class="subtitle">Members</span>
             
-                <li data-name="PIXI.tween.TweenPath#closed"><a href="PIXI.tween.TweenPath.html#closed">closed</a></li>
-            
-                <li data-name="PIXI.tween.TweenPath#currentPath"><a href="PIXI.tween.TweenPath.html#currentPath">currentPath</a></li>
-            
                 <li data-name="PIXI.tween.TweenPath#dirty"><a href="PIXI.tween.TweenPath.html#dirty">dirty</a></li>
-            
-                <li data-name="PIXI.tween.TweenPath#graphicsData"><a href="PIXI.tween.TweenPath.html#graphicsData">graphicsData</a></li>
             
                 <li data-name="PIXI.tween.TweenPath#length"><a href="PIXI.tween.TweenPath.html#length">length</a></li>
             
@@ -330,7 +322,19 @@
             
                 <li data-name="PIXI.tween.TweenPath#distanceBetween"><a href="PIXI.tween.TweenPath.html#distanceBetween">distanceBetween</a></li>
             
+                <li data-name="PIXI.tween.TweenPath#drawCircle"><a href="PIXI.tween.TweenPath.html#drawCircle">drawCircle</a></li>
+            
+                <li data-name="PIXI.tween.TweenPath#drawEllipse"><a href="PIXI.tween.TweenPath.html#drawEllipse">drawEllipse</a></li>
+            
+                <li data-name="PIXI.tween.TweenPath#drawPolygon"><a href="PIXI.tween.TweenPath.html#drawPolygon">drawPolygon</a></li>
+            
+                <li data-name="PIXI.tween.TweenPath#drawRect"><a href="PIXI.tween.TweenPath.html#drawRect">drawRect</a></li>
+            
+                <li data-name="PIXI.tween.TweenPath#drawRoundedRect"><a href="PIXI.tween.TweenPath.html#drawRoundedRect">drawRoundedRect</a></li>
+            
                 <li data-name="PIXI.tween.TweenPath#drawShape"><a href="PIXI.tween.TweenPath.html#drawShape">drawShape</a></li>
+            
+                <li data-name="PIXI.tween.TweenPath#drawStar"><a href="PIXI.tween.TweenPath.html#drawStar">drawStar</a></li>
             
                 <li data-name="PIXI.tween.TweenPath#getPoint"><a href="PIXI.tween.TweenPath.html#getPoint">getPoint</a></li>
             
@@ -379,9 +383,13 @@
 
 
     <section>
-        <article class="readme"><h1>pixi-tween</h1><p>pixi-tween is a plugin for Pixi.js v4.1.0 or higher to create tween animations.</p>
-<h2>API documentation</h2><p><a target="_blank" href="https://themoonrat.github.io/pixi-tween/docs/index.html">JSDocs</a></p>
-<h2>Usage</h2><h3>Rollup / Browserify / Webpack</h3><p>If you use Browserify or Webpack you can use pixi-tween like this:</p>
+        <article class="readme"><h1>pixi-tween</h1>
+<p>pixi-tween is a plugin for PixiJS v5.0.0 or higher to create tween animations.</p>
+<h2>API documentation</h2>
+<p><a target="_blank" href="https://themoonrat.github.io/pixi-tween/docs/index.html">JSDocs</a></p>
+<h2>Usage</h2>
+<h3>Rollup / Browserify / Webpack</h3>
+<p>If you use Browserify or Webpack you can use pixi-tween like this:</p>
 <pre class="prettyprint source lang-js"><code>import * as PIXI from ('pixi.js');
 import tweenManager from ('pixi-tween');
 
@@ -391,20 +399,30 @@ document.body.appendChild(app.view);
 // Listen for animate update and update the tween manager
 app.ticker.add(function(delta) {
     PIXI.tweenManager.update();
-});</code></pre><h3>Prebuilt files</h3><p>If not, the namespaces are automatically added to global anyway</p>
+});
+</code></pre>
+<h3>Prebuilt files</h3>
+<p>If not, the namespaces are automatically added to global anyway</p>
 <pre class="prettyprint source lang-js"><code>const app = new PIXI.Application(800, 600);
 document.body.appendChild(app.view);
 
 // Listen for animate update and update the tween manager
 app.ticker.add(function(delta) {
     PIXI.tweenManager.update();
-});</code></pre><h2>How it works</h2><p>This plugin add a new namespace names <code>tween</code> to the PIXI namespace, and this new namespace has 3 new classes Tween, TweenPath and TweenManager, also add an Easing object.</p>
-<p>A tweenManager is automatically created for you in PIXI.tweenManager, which you need to update on ticks via <code>PIXI.tweenManager.update()</code>.<br>You can create your own tweenManagers via <code>new PIXI.tween.TweenManager</code>, and you can also manually update the timings of a manager via <code>PIXI.tweenManager.update(deltaMS)</code></p>
-<p>When a tween is ended, the instance will kept in the memory and in the tweenManager, but you can prevent this if you set .expire = true in the tween.</p>
-<h3>Events</h3><p>Tween extends from <a target="_blank" href="https://github.com/primus/eventemitter3">PIXI.utils.EventEmitter</a>, and emit some events: start, end, repeat, update, stop and pingpong. You can read about these in the api documentation under PIXI.tween.Tween.</p>
-<h3>Paths</h3><p>Move an object along a path it's easy with TweenPath. TweenPath use a similar PIXI.Graphics API to create paths, and once it's created our path we just need to add it to a tween with .path = ourPathCreated.</p>
+});
+</code></pre>
+<h2>How it works</h2>
+<p>This plugin add a new namespace names <code>tween</code> to the PIXI namespace, and this new namespace has 3 new classes Tween, TweenPath and TweenManager, also add an Easing object.</p>
+<p>A tweenManager is automatically created for you in PIXI.tweenManager, which you need to update on ticks via <code>PIXI.tweenManager.update()</code>.<br>
+You can create your own tweenManagers via <code>new PIXI.tween.TweenManager</code>, and you can also manually update the timings of a manager via <code>PIXI.tweenManager.update(deltaMS)</code></p>
+<p>When a tween is ended, the instance will kept be automatically removed from the tweenManager. Keep a reference to it yourself it you want to re-use; it will re-add itself if required.</p>
+<h3>Events</h3>
+<p>Tween extends from <a target="_blank" href="https://github.com/primus/eventemitter3">PIXI.utils.EventEmitter</a>, and emit some events: start, end, repeat, update, stop and pingpong. You can read about these in the api documentation under PIXI.tween.Tween.</p>
+<h3>Paths</h3>
+<p>Move an object along a path it's easy with TweenPath. TweenPath use a similar PIXI.Graphics API to create paths, and once it's created our path we just need to add it to a tween with .path = ourPathCreated.</p>
 <p>If you need draw your path (useful to debug), PIXI.Graphics has been enhanced with a new method named .drawPath(path). Use it the same way like .drawRectanle, .drawShape, etc...</p>
-<h2>Basic example</h2><pre class="prettyprint source lang-js"><code>const app = new PIXI.Application(800, 600);
+<h2>Basic example</h2>
+<pre class="prettyprint source lang-js"><code>const app = new PIXI.Application(800, 600);
 document.body.appendChild(app.view);
 
 const sprite = new PIXI.Sprite(PIXI.Texture.WHITE);
@@ -419,7 +437,11 @@ tween.start();
 // Listen for animate update and update the tween manager
 app.ticker.add(function(delta) {
     PIXI.tweenManager.update();
-});</code></pre><h2>Other examples</h2><p> <a target="_blank" href="https://themoonrat.github.io/pixi-tween/examples/easing.html">Easing</a><br> <a target="_blank" href="https://themoonrat.github.io/pixi-tween/examples/path.html">TweenPath</a></p></article>
+});
+</code></pre>
+<h2>Other examples</h2>
+<p><a target="_blank" href="https://themoonrat.github.io/pixi-tween/examples/easing.html">Easing</a><br>
+<a target="_blank" href="https://themoonrat.github.io/pixi-tween/examples/path.html">TweenPath</a></p></article>
     </section>
 
 
@@ -430,7 +452,7 @@ app.ticker.add(function(delta) {
         
 
         <footer>
-            Documentation generated by <a target="_blank" href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Fri Feb 16 2018 10:50:28 GMT+0000 (GMT Standard Time)
+            Documentation generated by <a target="_blank" href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.3</a> on Tue Dec 15 2020 12:15:27 GMT+0000 (Greenwich Mean Time)
         </footer>
     </div>
 </div>

@@ -1,44 +1,44 @@
 {
-    "tags": {
-        "allowUnknownTags": false
-    },
-    "source": {
-        "include": [
-            "./src/"
-        ],
-        "includePattern": ".+\\.js(doc)?$",
-        "excludePattern": "(^|\\/|\\\\)_"
-    },
-    "plugins": [
-        "plugins/markdown",
-        "./scripts/jsdoc-fix"
-    ],
-    "templates": {
-        "cleverLinks": false,
-        "monospaceLinks": false,
-        "default": {
-            "outputSourceFiles": true
-        },
-        "applicationName": "pixi-tween",
-        "footer": "",
-        "copyright": "pixi-tween Copyright © 2017 Dave Moore.",
-        "meta": {
-            "title": "pixi-tween Documentation",
-            "description": "API Documentation for pixi-tween",
-            "keyword": "pixi, pixijs, webgl, tween"
-        },
-        "linenums": true
-    },
-    "markdown": {
-        "parser": "gfm",
-        "hardwrap": true
-    },
-    "opts": {
-        "encoding": "utf8",
-        "recurse": true,
-        "private": false,
-        "lenient": true,
-        "destination": "./docs",
-        "template": "./node_modules/jaguarjs-jsdoc"
-    }
+	"tags": {
+		"allowUnknownTags": false
+	},
+	"source": {
+		"include": [
+			"./src/"
+		],
+		"includePattern": ".+\\.js(doc)?$",
+		"excludePattern": "(^|\\/|\\\\)_"
+	},
+	"plugins": [
+		"plugins/markdown",
+		"./scripts/jsdoc-fix"
+	],
+	"templates": {
+		"cleverLinks": false,
+		"monospaceLinks": false,
+		"default": {
+			"outputSourceFiles": true
+		},
+		"applicationName": "pixi-tween",
+		"footer": "",
+		"copyright": "pixi-tween Copyright © 2017 Dave Moore.",
+		"meta": {
+			"title": "pixi-tween Documentation",
+			"description": "API Documentation for pixi-tween",
+			"keyword": "pixi, pixijs, webgl, tween"
+		},
+		"linenums": true
+	},
+	"markdown": {
+		"parser": "gfm",
+		"hardwrap": true
+	},
+	"opts": {
+		"encoding": "utf8",
+		"recurse": true,
+		"private": false,
+		"lenient": true,
+		"destination": "./docs",
+		"template": "./node_modules/jaguarjs-jsdoc"
+	}
 }

@@ -169,8 +169,6 @@
             
                 <li data-name="PIXI.tween.Tween#elapsedTime"><a href="PIXI.tween.Tween.html#elapsedTime">elapsedTime</a></li>
             
-                <li data-name="PIXI.tween.Tween#expire"><a href="PIXI.tween.Tween.html#expire">expire</a></li>
-            
                 <li data-name="PIXI.tween.Tween#isEnded"><a href="PIXI.tween.Tween.html#isEnded">isEnded</a></li>
             
                 <li data-name="PIXI.tween.Tween#isStarted"><a href="PIXI.tween.Tween.html#isStarted">isStarted</a></li>
@@ -205,8 +203,6 @@
             <ul class="methods itemMembers">
             
             <span class="subtitle">Methods</span>
-            
-                <li data-name="PIXI.tween.Tween#addTo"><a href="PIXI.tween.Tween.html#addTo">addTo</a></li>
             
                 <li data-name="PIXI.tween.Tween#chain"><a href="PIXI.tween.Tween.html#chain">chain</a></li>
             
@@ -259,6 +255,8 @@
             
             <span class="subtitle">Members</span>
             
+                <li data-name="PIXI.tween.TweenManager#_tweensToRemove"><a href="PIXI.tween.TweenManager.html#_tweensToRemove">_tweensToRemove</a></li>
+            
                 <li data-name="PIXI.tween.TweenManager#tweens"><a href="PIXI.tween.TweenManager.html#tweens">tweens</a></li>
             
             </ul>
@@ -297,13 +295,7 @@
             
             <span class="subtitle">Members</span>
             
-                <li data-name="PIXI.tween.TweenPath#closed"><a href="PIXI.tween.TweenPath.html#closed">closed</a></li>
-            
-                <li data-name="PIXI.tween.TweenPath#currentPath"><a href="PIXI.tween.TweenPath.html#currentPath">currentPath</a></li>
-            
                 <li data-name="PIXI.tween.TweenPath#dirty"><a href="PIXI.tween.TweenPath.html#dirty">dirty</a></li>
-            
-                <li data-name="PIXI.tween.TweenPath#graphicsData"><a href="PIXI.tween.TweenPath.html#graphicsData">graphicsData</a></li>
             
                 <li data-name="PIXI.tween.TweenPath#length"><a href="PIXI.tween.TweenPath.html#length">length</a></li>
             
@@ -330,7 +322,19 @@
             
                 <li data-name="PIXI.tween.TweenPath#distanceBetween"><a href="PIXI.tween.TweenPath.html#distanceBetween">distanceBetween</a></li>
             
+                <li data-name="PIXI.tween.TweenPath#drawCircle"><a href="PIXI.tween.TweenPath.html#drawCircle">drawCircle</a></li>
+            
+                <li data-name="PIXI.tween.TweenPath#drawEllipse"><a href="PIXI.tween.TweenPath.html#drawEllipse">drawEllipse</a></li>
+            
+                <li data-name="PIXI.tween.TweenPath#drawPolygon"><a href="PIXI.tween.TweenPath.html#drawPolygon">drawPolygon</a></li>
+            
+                <li data-name="PIXI.tween.TweenPath#drawRect"><a href="PIXI.tween.TweenPath.html#drawRect">drawRect</a></li>
+            
+                <li data-name="PIXI.tween.TweenPath#drawRoundedRect"><a href="PIXI.tween.TweenPath.html#drawRoundedRect">drawRoundedRect</a></li>
+            
                 <li data-name="PIXI.tween.TweenPath#drawShape"><a href="PIXI.tween.TweenPath.html#drawShape">drawShape</a></li>
+            
+                <li data-name="PIXI.tween.TweenPath#drawStar"><a href="PIXI.tween.TweenPath.html#drawStar">drawStar</a></li>
             
                 <li data-name="PIXI.tween.TweenPath#getPoint"><a href="PIXI.tween.TweenPath.html#getPoint">getPoint</a></li>
             
@@ -366,7 +370,7 @@
     
 <header>
     <h2>
-        <span class="ancestors"><a href="PIXI.tween.html">.tween</a>.</span>
+        <span class="ancestors"><a href="PIXI.tween.html">.tween</a>~</span>
     
     Tween
     </h2>
@@ -385,12 +389,12 @@
     <div class="nameContainer">
         <h4 class="name" id="Tween">
             
-            new PIXI.tween.Tween<span class="signature">(target, <span class="optional">manager</span>, <span class="optional">config</span>)</span>
+            new Tween<span class="signature">(target, <span class="optional">manager</span>, <span class="optional">config</span>)</span>
         </h4>
     
         
         <div class="tag-source">
-            <a href="Tween.js.html">Tween.js</a>, <a href="Tween.js.html#line76">line 76</a>
+            <a href="Tween.js.html">Tween.js</a>, <a href="Tween.js.html#line81">line 81</a>
         </div>
         
     </div>
@@ -720,51 +724,6 @@
     
     <div class="description">
         <p>How much time has passed on an active tween</p>
-    </div>
-    
-    
-    
-<dl class="details">
-    
-        
-    
-    
-    
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-</dl>
-
-    
-    
-</dd>
-
-        
-            
-<dt>
-    <div class="nameContainer">
-        <h4 class="name" id="expire">expire<span class="type-signature type boolean">boolean</span> </h4>
-    </div>
-    
-    
-</dt>
-<dd>
-    
-    <div class="description">
-        <p>Set true if you want to delete this instance when the animation it's done</p>
     </div>
     
     
@@ -1257,153 +1216,6 @@
             
 <dt>
     <div class="nameContainer">
-        <h4 class="name" id="addTo">
-            
-            addTo<span class="signature">(manager)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{<a href="PIXI.tween.Tween.html">PIXI.tween.Tween</a>}</span>
-        </h4>
-    
-        
-        <div class="tag-source">
-            <a href="Tween.js.html">Tween.js</a>, <a href="Tween.js.html#line286">line 286</a>
-        </div>
-        
-    </div>
-
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        <p>Add the tween to a manager</p>
-    </div>
-    
-
-    
-    
-    
-    
-    
-        
-
-<table class="params">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
-		
-		<th>Type</th>
-		
-		
-		
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-	
-	<tbody>
-	
-	
-        <tr>
-            
-                <td class="name"><code>manager</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type"><a href="PIXI.tween.TweenManager.html">PIXI.tween.TweenManager</a></span>
-
-
-            
-            </td>
-            
-            
-            
-            <td class="description last">
-                
-                <p>Tween manager to handle this tween</p></td>
-        </tr>
-	
-	
-	</tbody>
-</table>
-    
-    
-    
-<dl class="details">
-    
-        
-    
-    
-    
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-</dl>
-
-    
-    
-
-    
-
-    
-    
-    
-    
-    
-    <h5>Returns:</h5>
-    
-
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Type</th>
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-    <tbody>
-    
-        <tr>
-            
-            <td class="type">
-            
-                        <a href="PIXI.tween.Tween.html">PIXI.tween.Tween</a>
-                        
-                    
-            </td>
-            <td class="description last"><ul>
-<li>This tween instance</li>
-</ul></td>
-        </tr>
-    
-    </tbody>
-</table>
-
-    
-    
-    
-</dd>
-
-        
-            
-<dt>
-    <div class="nameContainer">
         <h4 class="name" id="chain">
             
             chain<span class="signature">(tween)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{<a href="PIXI.tween.Tween.html">PIXI.tween.Tween</a>}</span>
@@ -1411,7 +1223,7 @@
     
         
         <div class="tag-source">
-            <a href="Tween.js.html">Tween.js</a>, <a href="Tween.js.html#line410">line 410</a>
+            <a href="Tween.js.html">Tween.js</a>, <a href="Tween.js.html#line393">line 393</a>
         </div>
         
     </div>
@@ -1660,7 +1472,7 @@
     
         
         <div class="tag-source">
-            <a href="Tween.js.html">Tween.js</a>, <a href="Tween.js.html#line160">line 160</a>
+            <a href="Tween.js.html">Tween.js</a>, <a href="Tween.js.html#line157">line 157</a>
         </div>
         
     </div>
@@ -1807,7 +1619,7 @@
     
         
         <div class="tag-source">
-            <a href="Tween.js.html">Tween.js</a>, <a href="Tween.js.html#line392">line 392</a>
+            <a href="Tween.js.html">Tween.js</a>, <a href="Tween.js.html#line375">line 375</a>
         </div>
         
     </div>
@@ -1818,7 +1630,8 @@
     
     
     <div class="description">
-        <p>Set the start point data for the tween.<br>If nothing is set, data is reset so that starting the tween will use the objects current state as the start point</p>
+        <p>Set the start point data for the tween.<br>
+If nothing is set, data is reset so that starting the tween will use the objects current state as the start point</p>
     </div>
     
 
@@ -1969,7 +1782,7 @@
     
         
         <div class="tag-source">
-            <a href="Tween.js.html">Tween.js</a>, <a href="Tween.js.html#line298">line 298</a>
+            <a href="Tween.js.html">Tween.js</a>, <a href="Tween.js.html#line279">line 279</a>
         </div>
         
     </div>
@@ -2071,7 +1884,7 @@
     
         
         <div class="tag-source">
-            <a href="Tween.js.html">Tween.js</a>, <a href="Tween.js.html#line424">line 424</a>
+            <a href="Tween.js.html">Tween.js</a>, <a href="Tween.js.html#line407">line 407</a>
         </div>
         
     </div>
@@ -2173,7 +1986,7 @@
     
         
         <div class="tag-source">
-            <a href="Tween.js.html">Tween.js</a>, <a href="Tween.js.html#line314">line 314</a>
+            <a href="Tween.js.html">Tween.js</a>, <a href="Tween.js.html#line295">line 295</a>
         </div>
         
     </div>
@@ -2320,7 +2133,7 @@
     
         
         <div class="tag-source">
-            <a href="Tween.js.html">Tween.js</a>, <a href="Tween.js.html#line334">line 334</a>
+            <a href="Tween.js.html">Tween.js</a>, <a href="Tween.js.html#line317">line 317</a>
         </div>
         
     </div>
@@ -2422,7 +2235,7 @@
     
         
         <div class="tag-source">
-            <a href="Tween.js.html">Tween.js</a>, <a href="Tween.js.html#line356">line 356</a>
+            <a href="Tween.js.html">Tween.js</a>, <a href="Tween.js.html#line339">line 339</a>
         </div>
         
     </div>
@@ -2589,7 +2402,7 @@
     
         
         <div class="tag-source">
-            <a href="Tween.js.html">Tween.js</a>, <a href="Tween.js.html#line376">line 376</a>
+            <a href="Tween.js.html">Tween.js</a>, <a href="Tween.js.html#line359">line 359</a>
         </div>
         
     </div>
@@ -2744,7 +2557,7 @@
     
         
         <div class="tag-source">
-            <a href="Tween.js.html">Tween.js</a>, <a href="Tween.js.html#line455">line 455</a>
+            <a href="Tween.js.html">Tween.js</a>, <a href="Tween.js.html#line438">line 438</a>
         </div>
         
     </div>
@@ -3014,37 +2827,9 @@
             
                 
 <span class="param-type">function</span>
+|
 
-
-            
-            </td>
-            
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-                    
-                
-                </td>
-            
-            
-            
-            
-            <td class="description last"></td>
-        </tr>
-	
-	
-	
-        <tr>
-            
-                <td class="name"><code>expire</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">boolean</span>
+<span class="param-type">string</span>
 
 
             
@@ -3586,7 +3371,8 @@
     
     
     <div class="description">
-        <p>Fired when the tween is over. If the .loop option it's true, this event never will be fired.<br>If the tween has an .repeat number, this event will be fired just when all the repeats are done.</p>
+        <p>Fired when the tween is over. If the .loop option it's true, this event never will be fired.<br>
+If the tween has an .repeat number, this event will be fired just when all the repeats are done.</p>
     </div>
     
 
@@ -4116,7 +3902,7 @@
         
 
         <footer>
-            Documentation generated by <a target="_blank" href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Fri Feb 16 2018 10:50:28 GMT+0000 (GMT Standard Time)
+            Documentation generated by <a target="_blank" href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.3</a> on Tue Dec 15 2020 12:15:27 GMT+0000 (Greenwich Mean Time)
         </footer>
     </div>
 </div>

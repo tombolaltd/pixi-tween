@@ -169,8 +169,6 @@
             
                 <li data-name="PIXI.tween.Tween#elapsedTime"><a href="PIXI.tween.Tween.html#elapsedTime">elapsedTime</a></li>
             
-                <li data-name="PIXI.tween.Tween#expire"><a href="PIXI.tween.Tween.html#expire">expire</a></li>
-            
                 <li data-name="PIXI.tween.Tween#isEnded"><a href="PIXI.tween.Tween.html#isEnded">isEnded</a></li>
             
                 <li data-name="PIXI.tween.Tween#isStarted"><a href="PIXI.tween.Tween.html#isStarted">isStarted</a></li>
@@ -205,8 +203,6 @@
             <ul class="methods itemMembers">
             
             <span class="subtitle">Methods</span>
-            
-                <li data-name="PIXI.tween.Tween#addTo"><a href="PIXI.tween.Tween.html#addTo">addTo</a></li>
             
                 <li data-name="PIXI.tween.Tween#chain"><a href="PIXI.tween.Tween.html#chain">chain</a></li>
             
@@ -259,6 +255,8 @@
             
             <span class="subtitle">Members</span>
             
+                <li data-name="PIXI.tween.TweenManager#_tweensToRemove"><a href="PIXI.tween.TweenManager.html#_tweensToRemove">_tweensToRemove</a></li>
+            
                 <li data-name="PIXI.tween.TweenManager#tweens"><a href="PIXI.tween.TweenManager.html#tweens">tweens</a></li>
             
             </ul>
@@ -297,13 +295,7 @@
             
             <span class="subtitle">Members</span>
             
-                <li data-name="PIXI.tween.TweenPath#closed"><a href="PIXI.tween.TweenPath.html#closed">closed</a></li>
-            
-                <li data-name="PIXI.tween.TweenPath#currentPath"><a href="PIXI.tween.TweenPath.html#currentPath">currentPath</a></li>
-            
                 <li data-name="PIXI.tween.TweenPath#dirty"><a href="PIXI.tween.TweenPath.html#dirty">dirty</a></li>
-            
-                <li data-name="PIXI.tween.TweenPath#graphicsData"><a href="PIXI.tween.TweenPath.html#graphicsData">graphicsData</a></li>
             
                 <li data-name="PIXI.tween.TweenPath#length"><a href="PIXI.tween.TweenPath.html#length">length</a></li>
             
@@ -330,7 +322,19 @@
             
                 <li data-name="PIXI.tween.TweenPath#distanceBetween"><a href="PIXI.tween.TweenPath.html#distanceBetween">distanceBetween</a></li>
             
+                <li data-name="PIXI.tween.TweenPath#drawCircle"><a href="PIXI.tween.TweenPath.html#drawCircle">drawCircle</a></li>
+            
+                <li data-name="PIXI.tween.TweenPath#drawEllipse"><a href="PIXI.tween.TweenPath.html#drawEllipse">drawEllipse</a></li>
+            
+                <li data-name="PIXI.tween.TweenPath#drawPolygon"><a href="PIXI.tween.TweenPath.html#drawPolygon">drawPolygon</a></li>
+            
+                <li data-name="PIXI.tween.TweenPath#drawRect"><a href="PIXI.tween.TweenPath.html#drawRect">drawRect</a></li>
+            
+                <li data-name="PIXI.tween.TweenPath#drawRoundedRect"><a href="PIXI.tween.TweenPath.html#drawRoundedRect">drawRoundedRect</a></li>
+            
                 <li data-name="PIXI.tween.TweenPath#drawShape"><a href="PIXI.tween.TweenPath.html#drawShape">drawShape</a></li>
+            
+                <li data-name="PIXI.tween.TweenPath#drawStar"><a href="PIXI.tween.TweenPath.html#drawStar">drawStar</a></li>
             
                 <li data-name="PIXI.tween.TweenPath#getPoint"><a href="PIXI.tween.TweenPath.html#getPoint">getPoint</a></li>
             
@@ -366,7 +370,7 @@
     
 <header>
     <h2>
-        <span class="ancestors"><a href="PIXI.tween.html">.tween</a>.</span>
+        <span class="ancestors"><a href="PIXI.tween.html">.tween</a>~</span>
     
     TweenManager
     </h2>
@@ -385,12 +389,12 @@
     <div class="nameContainer">
         <h4 class="name" id="TweenManager">
             
-            new PIXI.tween.TweenManager<span class="signature">()</span>
+            new TweenManager<span class="signature">()</span>
         </h4>
     
         
         <div class="tag-source">
-            <a href="TweenManager.js.html">TweenManager.js</a>, <a href="TweenManager.js.html#line11">line 11</a>
+            <a href="TweenManager.js.html">TweenManager.js</a>, <a href="TweenManager.js.html#line13">line 13</a>
         </div>
         
     </div>
@@ -466,6 +470,51 @@
             
 <dt>
     <div class="nameContainer">
+        <h4 class="name" id="_tweensToRemove">_tweensToRemove<span class="type-signature type array.<pixi.tween.tween>">Array.&lt;<a href="PIXI.tween.Tween.html">PIXI.tween.Tween</a>></span> </h4>
+    </div>
+    
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        <p>The array of tweens to remove at the end of the next update</p>
+    </div>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
         <h4 class="name" id="tweens">tweens<span class="type-signature type array.<pixi.tween.tween>">Array.&lt;<a href="PIXI.tween.Tween.html">PIXI.tween.Tween</a>></span> </h4>
     </div>
     
@@ -524,7 +573,7 @@
     
         
         <div class="tag-source">
-            <a href="TweenManager.js.html">TweenManager.js</a>, <a href="TweenManager.js.html#line86">line 86</a>
+            <a href="TweenManager.js.html">TweenManager.js</a>, <a href="TweenManager.js.html#line90">line 90</a>
         </div>
         
     </div>
@@ -535,7 +584,8 @@
     
     
     <div class="description">
-        <p>Normally you want to use .createTween(target) to create a tween, but, you can also create a tween<br>with new PIXI.Tween(target) and add it in the manager with this method.</p>
+        <p>Normally you want to use .createTween(target) to create a tween, but, you can also create a tween<br>
+with new PIXI.Tween(target) and add it in the manager with this method.</p>
     </div>
     
 
@@ -640,7 +690,7 @@
     
         
         <div class="tag-source">
-            <a href="TweenManager.js.html">TweenManager.js</a>, <a href="TweenManager.js.html#line76">line 76</a>
+            <a href="TweenManager.js.html">TweenManager.js</a>, <a href="TweenManager.js.html#line80">line 80</a>
         </div>
         
     </div>
@@ -822,7 +872,7 @@
     
         
         <div class="tag-source">
-            <a href="TweenManager.js.html">TweenManager.js</a>, <a href="TweenManager.js.html#line57">line 57</a>
+            <a href="TweenManager.js.html">TweenManager.js</a>, <a href="TweenManager.js.html#line61">line 61</a>
         </div>
         
     </div>
@@ -969,7 +1019,7 @@
     
         
         <div class="tag-source">
-            <a href="TweenManager.js.html">TweenManager.js</a>, <a href="TweenManager.js.html#line98">line 98</a>
+            <a href="TweenManager.js.html">TweenManager.js</a>, <a href="TweenManager.js.html#line106">line 106</a>
         </div>
         
     </div>
@@ -1085,7 +1135,7 @@
     
         
         <div class="tag-source">
-            <a href="TweenManager.js.html">TweenManager.js</a>, <a href="TweenManager.js.html#line26">line 26</a>
+            <a href="TweenManager.js.html">TweenManager.js</a>, <a href="TweenManager.js.html#line28">line 28</a>
         </div>
         
     </div>
@@ -1216,7 +1266,7 @@
         
 
         <footer>
-            Documentation generated by <a target="_blank" href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Fri Feb 16 2018 10:50:28 GMT+0000 (GMT Standard Time)
+            Documentation generated by <a target="_blank" href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.3</a> on Tue Dec 15 2020 12:15:27 GMT+0000 (Greenwich Mean Time)
         </footer>
     </div>
 </div>

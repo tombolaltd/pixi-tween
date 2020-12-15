@@ -1,110 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>pixi-tween path example</title>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.6.5/dat.gui.js"></script>
-  <script src="https://pixijs.download/v4.5.5/pixi.js"></script>
-  <script src="../bin/pixi-tween.js"></script>
-  <style>
-    html, body{
-      margin: 0;
-      padding: 0;
-    }
-  </style>
+	<meta charset="UTF-8">
+	<title>pixi-tween path example</title>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.7.6/dat.gui.js"></script>
+	<script src="https://pixijs.download/release/pixi-legacy.js"></script>
+	<script src="../bin/pixi-tween.js"></script>
+	<style>
+		html, body{
+			margin: 0;
+			padding: 0;
+		}
+	</style>
 </head>
 <body>
-  <script>
-    var renderer = new PIXI.autoDetectRenderer(800, 600);
-    document.body.appendChild(renderer.view);
-    var stage = new PIXI.Container();
+	<script>
+		var app = new PIXI.Application({width: 800, height: 600});
+		document.body.appendChild(app.view);
 
-    var raf;
-    function animate(){
-      raf = window.requestAnimationFrame(animate);
-      renderer.render(stage);
-      PIXI.tweenManager.update();
-    }
+		// Listen for animate update
+		app.ticker.add((delta) => {
+			PIXI.tweenManager.update();
+		});
 
-    function stop(){
-      window.cancelAnimationFrame(raf);
-    }
+		//Create a custom path
+		var path = new PIXI.tween.TweenPath();
+		path.moveTo(200, 20).lineTo(200, 200);
+		path.arcTo(350, 200, 450, 900, 100);
+		path.lineTo(200, 500);
+		path.lineTo(700, 100);
+		path.bezierCurveTo(700, 100, 700, 400, 100, 100);
+		path.closed = true;
 
-    //Create a custom path
-    var path = new PIXI.tween.TweenPath();
-    path.moveTo(200, 20).lineTo(200, 200);
-    path.arcTo(350, 200, 450, 900, 100);
-    path.lineTo(200, 500);
-    path.lineTo(700, 100);
-    path.bezierCurveTo(700, 100, 700, 400, 100, 100);
-    path.closed = true;
+		//Display the path
+		app.stage.addChild(path);
 
-    //Display the path
-    var gPath = new PIXI.Graphics();
-    gPath.lineStyle(1, 0xffffff, 1);
-    gPath.drawPath(path);
-    stage.addChild(gPath);
+		//Object to move along the path
+		var sprite = new PIXI.Sprite.from('./bunny.png')
+		sprite.anchor.set(0.5, 0.5);
+		app.stage.addChild(sprite);
 
-    //Object to move along the path
-    var sprite = new PIXI.Sprite.fromImage('./bunny.png')
-    //sprite.position.set(100,100);
-    sprite.anchor.set(0.5, 0.5);
-    stage.addChild(sprite);
+		//Tween animation
+		var tween = PIXI.tweenManager.createTween(sprite);
+		tween.path = path;
+		tween.time = 13000;
+		tween.easing = PIXI.tween.Easing.outBounce();
+		tween.loop = true;
+		tween.start();
 
-    //Tween animation
-    var tween = PIXI.tweenManager.createTween(sprite);
-    tween.path = path;
-    tween.time = 13000;
-    tween.easing = PIXI.tween.Easing.outBounce();
-    //tween.pathReverse  =true;
-    tween.loop = true;
-    tween.start();
+		//Add some visual animations :)
+		var tween2 = PIXI.tweenManager.createTween(sprite);
+		tween2.from({
+			rotation: 0,
+			scale: {
+				x: 1, y: 1
+			}
+		});
+		tween2.to({
+			rotation: PIXI.DEG_TO_RAD * 359,
+			scale: {x: 2.5, y: 2.5}
+		});
+		tween2.loop = true;
+		tween2.pingPong = true;
+		tween2.time = 3000;
+		tween2.start();
 
-    //Add some visual animations :)
-    var tween2 = PIXI.tweenManager.createTween(sprite);
-    tween2.from({
-      rotation: 0,
-      scale: {
-        x: 1, y: 1
-      }
-    });
-    tween2.to({
-      rotation: PIXI.DEG_TO_RAD * 359,
-      scale: {x: 2.5, y: 2.5}
-    });
-    tween2.loop = true;
-    tween2.pingPong = true;
-    tween2.time = 3000;
-    tween2.start();
+		/////GUI MENU CONTROLLER (It's not a part of this example)////
+		Object.defineProperty(PIXI.tween.Tween.prototype, '_easing', {
+			get: function(){
+				var r;
+				for(var k in PIXI.tween.Easing){
+					if(this.easing.toString() === PIXI.tween.Easing[k]().toString()){
+						r = k;
+						break;
+					}
+				}
 
-    animate();
+				return r;
+			},
+			set: function(value){
+				this.reset().stop();
+				this.easing = PIXI.tween.Easing[value]();
+				this.start();
+			}
+		});
 
-
-    /////GUI MENU CONTROLLER (It's not a part of this example)////
-    Object.defineProperty(PIXI.tween.Tween.prototype, '_easing', {
-      get: function(){
-        var r;
-        for(var k in PIXI.tween.Easing){
-          if(this.easing.toString() === PIXI.tween.Easing[k]().toString()){
-            r = k;
-            break;
-          }
-        }
-
-        return r;
-      },
-      set: function(value){
-        this.reset().stop();
-        this.easing = PIXI.tween.Easing[value]();
-        this.start();
-      }
-    });
-
-    var gui = new dat.GUI();
-    gui.add(tween, 'start');
-    gui.add(tween, 'stop');
-    gui.add(tween, 'reset');
-    gui.add(tween, '_easing', Object.keys(PIXI.tween.Easing));
-  </script>
+		var gui = new dat.GUI();
+		gui.add(tween, 'start');
+		gui.add(tween, 'stop');
+		gui.add(tween, 'reset');
+		gui.add(tween, '_easing', Object.keys(PIXI.tween.Easing));
+	</script>
 </body>
 </html>
